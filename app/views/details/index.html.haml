@@ -1,0 +1,33 @@
+.main
+  .showMain
+    .showContents
+      .topContents
+        .itemBox
+          %h2.itemBox__name
+            product
+          .itemBox__body
+            = image_tag '/assets/material/pict/pict-reason-01.jpg', alt: 'No Image', height: '346', class: 'itemBox__body__main'
+            %ul.subImages
+            aaa
+          .itemBox__price
+            bbb
+          .itemDetail
+            ccc
+          .table
+            ddd
+          .optionalArea
+            eee
+        .commentBox
+          aaa
+      %ul.showLinks
+        %li
+          = link_to "#", class: "link" do
+            = icon("fas", "angle-left")
+            前の商品
+        %li
+          = link_to "#", class: "link" do
+            後ろの商品
+            = icon("fas", "angle-right")
+      .relatedItems
+        = link_to "#", class: "relatedItems__link" do
+          メンズをもっとみる

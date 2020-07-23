@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+// 全体の表示を調整（topContentsを含む）
+.main {
+  background-color: #f8f8f8f8;
+  .showMain {
+    padding: 40px;
+    margin: 0 auto;
+    .showContents {
+      width: 700px;
+      margin: 0 auto;
+      .topContents {
+        padding: 0 ;
+        margin: 0 ;
+      }
+    }
+  }
+}
+
+// itemBoxクラス以下の装飾
+.itemBox {
+  padding: 24px 40px 40px;
+  background-color: #fff;
+  &__name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  &__body {
+    margin: 16px 0 0;
+    &__main {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &__price {
+    margin: 24px 0;
+  }
+  .itemDetail {
+    margin-bottom: 30px;
+  }
+  .table {
+    margin-bottom: 20px;
+  }
+  .optionalArea {
+
+  }
+}
+
+// commentBoxクラス以下の装飾
+.commentBox {
+  margin: 10px 0;
+  padding: 24px;
+  background-color: #fff;
+}
+
+
+// showLinksクラス以下の装飾
+.showLinks {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  .link {
+    text-decoration: none;
+    color: #3CCACE;
+  }
+}
+// relatedItemsクラス以下の装飾
+.relatedItems {
+  margin: 24px 0 8px;
+  &__link {
+    text-decoration: none;
+    color: #3CCACE;
+    font-size: 22px;
+    font-weight: bold;
+  }
+}
