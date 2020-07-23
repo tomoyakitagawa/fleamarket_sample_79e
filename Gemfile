@@ -55,6 +55,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -63,3 +67,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'unicorn'
 end
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'jquery-rails'
+gem 'ancestry'
+gem 'active_hash'
+gem 'devise'
+gem 'haml-rails', '>= 1.0', '<= 2.0.1'
+gem 'font-awesome-sass'
+gem 'payjp'
