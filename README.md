@@ -10,9 +10,9 @@
 - has_many :user_evaluations
 - has_many :seller_items, class_name: 'item', foreign_key: 'seller_id'
 - has_many :buyer_items, class_name: 'item', foreign_key: 'buyer_id'
-- belongs_to :profile, dependent: :destroy
-- belongs_to :credit_card, dependent: :destroy
-- belongs_to :delivery_address, dependent: :destroy
+- has_one :profile, dependent: :destroy
+- has_one :credit_card, dependent: :destroy
+- has_one :delivery_address, dependent: :destroy
 
 ## profilesテーブル
 
