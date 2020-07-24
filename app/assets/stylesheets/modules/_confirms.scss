@@ -1,0 +1,48 @@
+.confirms-page {
+  overflow: scroll;
+  background-color: #eee;
+}
+
+.header {
+  height: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  height: calc(100vh - 325px);
+}
+
+.contents {
+  height: 100%;
+  margin: 0 100px;
+  background-color: #fff;
+}
+
+.purchase_detail {
+  height: 100px;
+  text-align: center;
+  &__name {
+    font-size: 24px;
+    line-height: 100px;
+    font-weight: bold;
+  }
+}
+
+.buy_item {
+  height: 100px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  &__image {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+}
+
+.footer {
+  height: 200px;
+}

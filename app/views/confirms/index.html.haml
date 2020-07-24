@@ -1,0 +1,18 @@
+.confirms-page
+  .header
+    = link_to root_path do
+      = image_tag("/assets/material/logo/logo.png", width: "200px")
+    
+  .main
+    .contents
+      .purchase_detail
+        %h2.purchase_detail__name 購入内容の確認
+      .buy_item
+        = image_tag("/assets/material/buy_item.png", class: "buy_item__image")
+        .buy_item__name 商品名
+        .buy_item__price
+          .buy_item__price--shipping_fee_including_tax 送料込み(税込)
+          .buy_item__price--amount ￥32,000
+
+  .footer
+    足だよ
