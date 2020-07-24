@@ -6,9 +6,12 @@
           %h2.itemBox__name
             product
           .itemBox__body
-            = image_tag '/assets/material/pict/pict-reason-01.jpg', alt: 'No Image', height: '346', class: 'itemBox__body__main'
-            %ul.subImages
-            aaa
+            = image_tag '/assets/material/pict/pict-reason-01.jpg', alt: 'No Image', height: '346', class: 'itemBox__body__mainImage'
+            %ul.itemBox__body__subImages
+              %li
+                = image_tag '/assets/material/pict/pict-reason-02.jpg', alt: 'No Image', height: '75', width: '75', class: 'subImage'
+              %li
+                = image_tag '/assets/material/pict/pict-reason-03.jpg', alt: 'No Image', height: '75', width: '75', class: 'subImage'
           .itemBox__price
             bbb
           .itemDetail
