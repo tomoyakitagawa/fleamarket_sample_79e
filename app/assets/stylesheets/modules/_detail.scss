@@ -1,0 +1,225 @@
+* {
+  box-sizing: border-box;
+}
+
+// 　favo、通報、関連先リンクのマウスオーバー時の:hover設定
+@mixin clearfix() {
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+// 全体の表示を調整（topContentsを含む）
+.main {
+  background-color: #f8f8f8f8;
+  .showMain {
+    padding: 40px;
+    margin: 0 auto;
+    .showContents {
+      width: 700px;
+      margin: 0 auto;
+      .topContents {
+        padding: 0 ;
+        margin: 0 ;
+      }
+    }
+  }
+}
+
+// itemBoxクラス以下の装飾
+.itemBox {
+  padding: 24px 40px 40px;
+  background-color: #fff;
+  &__name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  &__body {
+    margin: 16px 0 0;
+    &__mainImage {
+      width: 100%;
+      height: 346px;
+      object-fit: cover;
+    }
+    &__subImages {
+      width: 100%;
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      .subImage {
+        margin-right: 10px;
+        width: 140px;
+        height: 87px;
+      }
+    }
+  }
+  &__price {
+    margin: 24px 0;
+    text-align: center;
+    &__tag {
+      font-weight: bold;
+      font-size: 46px;
+    }
+    &__detail {
+      font-size: 16px;
+    }
+  }
+  .itemDetail {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .table {
+    margin-bottom: 20px;
+    table {
+      border: solid 1px #f8f8f8;
+      width: 100%;
+      height: 375px;
+      border-collapse: collapse;
+    }
+    table th {
+      border: solid 1px #dedede;
+      background-color: #eee;
+      width: 20%;
+      padding: 8px;
+      font-weight: 400;
+      font-size: 14px;
+      text-align: center;
+    }
+    table td {
+      border: solid 1px #dedede;
+      padding: 15px;
+      font-size: 14px;
+    }
+    &__link {
+      text-decoration: none;
+      color: #3CCACE;
+    }
+  }
+  .optionalArea {
+    display: flex;
+    justify-content: space-between;
+    .favorite {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ffb340;
+      padding: 6px 10px;
+      border-radius: 40px;
+      color: #3CCACE;
+      font-size: 16px;
+      cursor : pointer;
+      &__icon {
+        margin-right: 5px;
+      }
+      &__word {
+        margin-right: 5px;
+      }
+      @include clearfix();
+    }
+    .inappropriate {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      border: 1px solid #333;
+      color: #333;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      @include clearfix();
+      &__icon {
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+// commentBoxクラス以下の装飾
+.commentBox {
+  margin: 10px 0;
+  padding: 24px;
+  background-color: #fff;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__textarea {
+      width: 100%;
+      padding: 10px;
+      height: 104px;
+    }
+    &__sentence {
+      width: 100%;
+      background-color: #f8f8f8;
+      margin: 10px 0;
+      padding: 8px;
+      font-size: 14px;
+    }
+    &__btn {
+      background-color: #3CCACE;
+      color: #fff;
+      border: 1px solid #3CCACE;
+      width: 60%;
+      height: 48px;
+      border-radius: 100px;
+      font-size: 18px;
+    }
+  }
+}
+
+
+// showLinksクラス以下の装飾
+.showLinks {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  .link {
+    text-decoration: none;
+    color: #3CCACE;
+  }
+}
+// relatedItemsクラス以下の装飾
+.relatedItems {
+  margin: 24px 0 8px;
+  &__link {
+    text-decoration: none;
+    color: #3CCACE;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .productLists {
+    margin: 24px 0 8px;
+    .productList {
+      margin-bottom: 10px;
+      width: calc(100% / 3);
+      .productListLink {
+        display: block;
+        text-decoration: none;
+        @include clearfix();
+        &__image {
+          width: 100%;
+          height: 150px;
+          vertical-align: bottom;
+        }
+        &__body {
+          color: #333333;
+          padding: 16px;
+          background-color: #fff;
+          &__name {
+            font-size: 16px;
+            font-weight: bold;
+          }
+          &__detail {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: bold;
+          }
+          &__unit {
+            font-size: 10px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
