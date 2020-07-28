@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+.Main {
+  @include main-class;
+  &__contents {
+    @include mainContents-class;
+    background-color: #fff;
+    .Logout {
+      padding: 64px;
+      &__container {
+        width: 320px;
+        margin: 0 auto;
+        &__btn {
+          background: #3CCACE;
+          border: 1px solid #3CCACE;
+          color: #fff;
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}
