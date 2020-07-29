@@ -2,10 +2,10 @@
   box-sizing: border-box;
 }
 
-.Main {
-  @include main-class;
+.Mypage-main {
+  @include base;
   &__contents {
-    @include mainContents-class;
+    @include width-size;
     background-color: #fff;
     .Logout {
       padding: 64px;

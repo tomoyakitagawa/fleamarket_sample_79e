@@ -1,9 +1,9 @@
-@mixin main-class {
+@mixin base {
   background-color: #f8f8f8;
   padding: 40px;
 }
 
-@mixin mainContents-class {
+@mixin width-size {
   width: 700px;
   margin: 0 auto;
 }
