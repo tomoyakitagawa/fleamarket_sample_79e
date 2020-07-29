@@ -1,0 +1,125 @@
+.main
+  .showMain
+    .showContents
+      .topContents
+        .itemBox
+          %h2.itemBox__name
+            product
+          .itemBox__body
+            = image_tag '/assets/pict-reason-01.jpg', alt: 'No Image', class: 'itemBox__body__mainImage'
+            %ul.itemBox__body__subImages
+              %li
+                = image_tag '/assets/pict-reason-02.jpg', alt: 'No Image', class: 'subImage'
+              %li
+                = image_tag '/assets/pict-reason-03.jpg', alt: 'No Image', class: 'subImage'
+          .itemBox__price
+            .itemBox__price__tag
+              ¥1000
+            .itemBox__proce__detail
+              （税込）送料込み
+          .itemDetail
+            ccc
+          .table
+            %table
+              %tr
+                %th
+                  出品者
+                %td
+                  りんご
+              %tr
+                %th
+                  カテゴリー
+                %td
+                  = link_to "#", class: "table__link" do
+                    ベビーキッズ
+                  %br
+                  = link_to "#", class: "table__link" do
+                    おもちゃ
+                  %br
+                  = link_to "#", class: "table__link" do
+                    知育玩具
+                  %br
+              %tr
+                %th
+                  ブランド
+                %td
+              %tr
+                %th
+                  商品のサイズ
+                %td
+              %tr
+                %th
+                  商品の状態
+                %td
+                  新品/未使用
+              %tr
+                %th
+                  配送料の負担
+                %td
+                  送料込み（出品者負担）
+              %tr
+                %th
+                  発送元地域
+                %td
+                  = link_to "#", class: "table__link" do
+                    北海道
+              %tr
+                %th
+                  発送日の目安
+                %td
+                  1-2日で発送
+          %br
+          .optionalArea
+            %ul.favorite
+              %li.favorite__icon
+                = icon("fas", "star")
+              %li.favorite__word
+                お気に入り
+              %li.favorite__count
+                0
+            %ul
+              = link_to "#", class: "inappropriate" do
+                %li.inappropriate__icon
+                  = icon("fas", "flag")
+                %li.inappropriate__word
+                  不適切な商品の通報
+        .commentBox
+          = form_with url: "#", class: "commentBox__form", local: true do |f|
+            = f.text_area :content, class: "commentBox__form__textarea"
+            %p.commentBox__form__sentence
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br
+            = button_tag type: 'submit', class: "commentBox__form__btn" do
+              = icon('fas', 'comment')
+              コメントする
+      %ul.showLinks
+        %li
+          = link_to "#", class: "link" do
+            = icon("fas", "angle-left")
+            前の商品
+        %li
+          = link_to "#", class: "link" do
+            後ろの商品
+            = icon("fas", "angle-right")
+      .relatedItems
+        = link_to "#", class: "relatedItems__link" do
+          メンズをもっとみる
+        .productLists
+          .productList
+            = link_to "#", class: "productListLink" do
+              = image_tag '/assets/pict-reason-03.jpg', alt: 'No Image', class: 'productListLink__image'
+              .productListLink__body
+                .productListLink__body__name
+                  %h3
+                    ee
+                %ul.productListLink__body__detail
+                  %li.productListLink__body__detail__price
+                    1000円
+                  %li.productListLink__body__detail__favorete
+                    = icon("fa", "star")
+                    0
+                %p.productListLink__body__unit
+                  (税込)
+
