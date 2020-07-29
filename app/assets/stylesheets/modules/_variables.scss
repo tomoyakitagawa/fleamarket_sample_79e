@@ -1,0 +1,9 @@
+@mixin base {
+  background-color: #f8f8f8;
+  padding: 40px;
+}
+
+@mixin width-size {
+  width: 700px;
+  margin: 0 auto;
+}
