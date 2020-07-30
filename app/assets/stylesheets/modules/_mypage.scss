@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+.Mypage-main {
+  @include base;
+  &__contents {
+    @include width-size;
+    .Avatar {
+      height: 200px;
+      background-color: #3CCACE;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      &__icon {
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        color: black;
+        &__image {
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+        }
+        &__name {
+          margin-top: 8px;
+          font-size: 14px;
+        }
+        &__number {
+          margin-top: 8px;
+          font-size: 14px;
+          display: flex;
+          justify-content: center;
+          &__evaluation {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+  &__side {
+    @include width-size;
+    .Nav {
+      &__head {
+        font-size: 16px;
+        margin: 15px 0 10px;
+      }
+      &__menu {
+        list-style: none;
+        &__list {
+          &__item {
+            text-decoration: none;
+            color: black;
+            display: block;
+            position: relative;
+            height: 54px;
+            padding: 16px;
+            border-bottom: 1px solid #dedede;
+            background: #ffffff;
+            font-size: 14px;
+            .fas {
+              position: absolute;
+              top: 50%;
+              transform: translate(0, -50%);
+              right: 16px;
+              color: #888;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.Mypage-main
+  .Mypage-main__contents
+    %section.Payment
+      %h2.Payment__head 支払い情報
+      .Payment__inner
+        = link_to new_card_path, class: 'Payment__inner__add-btn' do
+          = icon('far', 'credit-card')
+          クレジットカードを登録する

@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :confirms, only: :index
   resources :details, only: :index
+  resources :mypages, only: :index
+  resources :cards, only: [:index, :new]
+  resources :logs, only: :index
 end

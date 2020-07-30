@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+}
+
+.Mypage-main {
+  @include base;
+  &__contents {
+    @include width-size;
+    background-color: #fff;
+    .Payment {
+      &__head {
+        font-size: 24px;
+        text-align: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #dedede;
+      }
+      &__inner {
+        padding: 64px 0;
+        width: 320px;
+        margin: 0 auto;
+        &__add-btn {
+          text-decoration: none;
+          width: 100%;
+          display: block;
+          background-color: #3CCACE;
+          border: 1px solid #3CCACE;
+          border-radius: 4px;
+          color: #fff;
+          line-height: 48px;
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+    }
+    .Register {
+      &__head {
+        font-size: 24px;
+        text-align: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #dedede;
+      }
+      &__form {
+        padding: 24px 16px 40px;
+        &__content {
+          width: 340px;
+          margin: 0 auto;
+          &__group {
+            margin-bottom: 10px;
+            &__label {
+              display: inline-block;
+            }
+            &__necessary {
+              background-color:#3CCACE;
+              margin-left: 8px;
+              padding: 6px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+            }
+            &__input {
+              width: 100%;
+              margin-top: 8px;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #dedede;
+              background: #fff;
+              line-height: 1.5;
+            }
+            &__half {
+              display: inline-block;
+              width: 49%;
+              margin-top: 8px;
+              position: relative;
+              background: #fff;
+              &__select {
+                width: 130px;
+                appearance: none;
+                position: relative;
+                z-index: 2;
+                height: 48px;
+                padding: 0 16px;
+                border-radius: 4px;
+                border: 1px solid #dedede;
+              }
+              .fas {
+                position: absolute;
+                font-size: 1.3rem;
+                top: 50%;
+                transform: translate(0, -50%);
+                right: 50px;
+                z-index: 2;
+                pointer-events: none;
+                color: #888;
+              }
+            }
+          }
+          &__btn {
+            background: #3CCACE;
+            border: 1px solid #3CCACE;
+            color: #fff;
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            border-radius: 4px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

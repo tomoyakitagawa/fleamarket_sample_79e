@@ -1,6 +1,7 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "modules/variables";
 @import "modules/toppage";
 @import "modules/login";
 @import "modules/mypage";
@@ -8,3 +9,5 @@
 @import "modules/detail";
 @import "modules/confirms";
 @import "modules/signin";
+@import "modules/card";
+@import "modules/log";
