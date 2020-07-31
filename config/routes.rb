@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :mypages, only: :index
   resources :cards, only: [:index, :new]
   resources :logs, only: :index
+  resources :delivery_address, only: :index
 end

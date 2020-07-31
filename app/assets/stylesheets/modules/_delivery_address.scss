@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+
+.delivery_address-wrapper {
+  position: relative;
+  min-height: 100%;
+  background: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+}
+
+.delivery_address-header {
+  height: 128px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.delivery_address-main {
+  display: block;
+}
+
+.delivery_address-container {
+  width: 700px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.delivery_address-head {
+  font-size: 22px;
+  padding: 32px;
+  line-height: 1.5;
+  text-align: center;
+  font-weight: bold;
+}
+
+.delivery_address-form {
+  padding: 24px 16px 40px;
+  border-top: 1px solid #f5f5f5;
+}
+
+.delivery_address-content {
+  max-width: 343px;
+  margin: 0 auto;
+}
+
+.addlress-form-label {
+  font-weight: 600;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.delivery_address-require {
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  background: #ea352d;
+  &__optionall {
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+    background: #ccc;
+  }
+}
+
+.delivery_address-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delivery_address-input-default {
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  margin: 8px 0 24px 0;
+  width: 100%;
+}
+
+.left-side {
+  margin-right: 8px;
+  width: 50%;
+}
+
+.right-side {
+  width: 50%;
+}
+
+.user_registration-btn {
+  height: 55px;
+  width: 100%;
+  display: inherit;
+  display: inline-block;
+  background-color: #3CCACE;
+  color: white;
+  border: none;
+  margin: 24px 0 0;
+}
+.delivery_address-footer {
+  width: 456px;
+  height: 220px;
+  margin: 0 auto;
+  z-index: 1;
+  padding: 40px 0;
+  text-align: center;
+  display: block;
+}
+
+.terms {
+  margin-bottom: 30px;
+  &__list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    font-size: 12px;
+    &__of_use {
+      margin: 0 20px;
+    }
+  }
+}
+
+.terms-link {
+  text-decoration: none;
+  color: #333 !important;
+}
+
+.footer-logo {
+  height: 65px;
+  margin-bottom: 8px;
+  width: 80px;
+  vertical-align: middle;
+}
+
+.company-inc {
+  font-size: 12px;
+}
