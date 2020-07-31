@@ -1,0 +1,177 @@
+// sns認証実装時に使用
+// * {
+//   box-sizing: border-box;
+// }
+
+// .signup-wrappre {
+//   background-repeat: no-repeat;
+//   margin: 0;
+//   border-style: solid;
+//   border-width: 0;
+//   font-size: inherit;
+//   line-height: inherit;
+//   box-sizing: inherit;
+//   display: block;
+//   background-color: #f5f5f5;
+//   font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
+// }
+
+// .signup-header {
+//   height: 128px;
+//   -webkit-box-align: center;
+//   align-items: center;
+//   display: flex;
+//   -webkit-box-pack: center;
+//   justify-content: center;
+// }
+
+// .signup-main {
+//   display: block;
+// }
+
+// .signup-container {
+//   width: 700px;
+//   margin: 0 auto;
+//   background: #fff;
+// }
+
+// .head-signup {
+//   font-size: 22px;
+//   padding: 32px;
+//   line-height: 1.5;
+//   text-align: center;
+// }
+
+// .signup-group-from {
+//   padding: 24px 16px 40px;
+//   border-top: 1px solid #f5f5f5;
+// }
+
+// // 登録フォームボタンの中央寄せ
+// .signup-content {
+//   max-width: 343px;
+//   margin: 0 auto;
+// }
+
+// // 登録フォームボタンの共通要素
+// .btn-default {
+//   display: block;
+//   width: 100%;
+//   line-height: 48px;
+//   font-size: 14px;
+//   border-radius: 4px;
+//   border: 1px solid transparent;
+//   -webkit-transition: all ease-out .3s;
+//   transition: all ease-out .3s;
+//   cursor: pointer;
+//   text-align: center;
+//   text-decoration: none;
+//   position: relative;
+// }
+
+// .btn-mail {
+//   position: relative;
+//   color: #fff;
+//   background-color: #ea352d;
+// }
+
+// .icon-mail {
+//   color: #fff;
+//   font-size: 16px;
+// }
+
+// .btn-sns-google {
+//   margin: 16px 0 0;
+//   background: #fff no-repeat 3px top;
+//   border: #979797 solid 1px;
+//   color: #333;
+// }
+
+// .icon-google {
+//   font-size: 20px;
+//   color: lightgreen;
+// }
+
+// .btn-sns-facebook {
+//   margin: 16px 0 0;
+//   background: #385185;
+//   color: #fff;
+// }
+
+// .icon-facebook {
+//   color: #fff;
+//   background: #385185;
+//   font-size: 20px;
+// }
+
+// .btn-sns-apple {
+//   margin: 15px 0 0;
+//   background: #000;
+//   color: #fff;
+// }
+
+// .icon-apple {
+//   color: #fff;
+//   background: #000;
+//   font-size: 20px;
+// }
+
+// // 登録フォームアイコンの位置調整
+// .signup-icon {
+//   position: absolute;
+//   top: 50%;
+//   left: 16px;
+//   -webkit-transform: translate(0, -50%);
+//   transform: translate(0, -50%);
+// }
+
+// .signup-form {
+//   margin: 40px 0 0;
+//   &__info-text {
+//     color: #888;
+//     font-size: 14px;
+//     &__link {
+//       color: #0099e8;
+//       text-decoration: none;
+//     }
+//   }
+// }
+
+// .singup-footer {
+//   width: 456px;
+//   height: 220px;
+//   margin: 0 auto;
+//   z-index: 1;
+//   padding: 40px 0;
+//   text-align: center;
+//   display: block;
+// }
+
+// .terms {
+//   margin-bottom: 30px;
+//   &__list {
+//     display: flex;
+//     justify-content: center;
+//     list-style: none;
+//     font-size: 12px;
+//     &__of_use {
+//       margin: 0 20px;
+//     }
+//   }
+// }
+
+// .terms-link {
+//   text-decoration: none;
+//   color: #333 !important;
+// }
+
+// .footer-logo {
+//   height: 65px;
+//   margin-bottom: 8px;
+//   width: 80px;
+//   vertical-align: middle;
+// }
+
+// .company-inc {
+//   font-size: 12px;
+// }

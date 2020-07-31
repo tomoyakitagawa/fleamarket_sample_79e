@@ -1,10 +1,10 @@
 .confirms-page
-  .header
+  .confirms-header
     = link_to root_path do
       = image_tag("logo.png", width: "200px")
     
-  .main
-    .contents
+  .confirms-main
+    .confirms-contents
       %section.purchase_detail
         %h2.purchase_detail__title
           購入内容の確認
@@ -63,7 +63,7 @@
             配送先と支払い方法の入力を完了してください。
           %button.purchase__group__style_button{"data-test" => "transaction-buy-purchase", :disabled => "", :tabindex => "-1", :type => "button"} 購入する
 
-  .footer
+  .confirms-footer
     .terms
       %ul.terms__list
         %li.terms__list__privacy_policy
