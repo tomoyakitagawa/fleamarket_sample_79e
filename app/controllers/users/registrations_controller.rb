@@ -41,7 +41,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       return
     end
 
-    return "#{date["birthday(1i)"].to_i}-#{date["birthday(2i)"].to_i}-#{date["birthday(3i)"].to_i}"
+    birthday = Date.new(date["birthday(1i)"].to_i, date["birthday(2i)"].to_i, date["birthday(3i)"].to_i)
+    birthday.strftime("%Y-%m-%d")
   end
   # GET /resource/edit
   # def edit
