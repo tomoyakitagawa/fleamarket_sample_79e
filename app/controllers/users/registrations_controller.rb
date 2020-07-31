@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.new(sign_up_params)
+    @user = User.new(sign_up_user_params)
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
-  def sign_up_params
+  def sign_up_user_params
     brithdate = birthday_join
     params.require(:user).permit(:nickname, :email, :password, :password_confirmation,:family_name, :first_name, :family_name_kana, :first_name_kana).merge(brithdate: brithdate)
   end
@@ -36,7 +36,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # 誕生日の送られてくるデータを「yyyy-mm-dd」の形に変換
   def birthday_join
     date = params[:user]
-    
+
     if date["birthday(1i)"].empty? && date["birthday(2i)"].empty? && date["birthday(3i)"].empty?
       return
     end
