@@ -8,7 +8,7 @@
     %section.registration-container
       %h2.registration-head
         会員情報入力
-      = form_with model: @user, url:"", class:"registration-form", local: true do |f|
+      = form_with model: @user, url: user_registration_path, class:"registration-form", local: true do |f|
         
         .registration-content
           .registration-form-group-top
