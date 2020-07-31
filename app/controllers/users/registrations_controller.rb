@@ -12,25 +12,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(sign_up_params)
+    if @user.save
+      redirect_to root_path
+    end
   end
 
   private
   def sign_up_params
     brithdate = birthday_join
-    binding.pry
-    params = require(:user).permit(:nickname, :email, :password, :password_confirmation, :family_name, :first_name, :family_name_kana, :first_name_kana).marge(brithdate: brithdate)
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation,:family_name, :first_name, :family_name_kana, :first_name_kana).merge(brithdate: brithdate)
   end
 
+  # 誕生日の送られてくるデータを「yyyy-mm-dd」の形に変換
   def birthday_join
-    # パラメータ取得
     date = params[:user]
-    # ブランク時のエラー回避のため、ブランクだったら何もしない
+    
     if date["birthday(1i)"].empty? && date["birthday(2i)"].empty? && date["birthday(3i)"].empty?
       return
     end
 
-    # 年月日別々できたものを結合して新しいDate型変数を作って返す
-    Date.new(date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i)
+    return "#{date["birthday(1i)"].to_i}-#{date["birthday(2i)"].to_i}-#{date["birthday(3i)"].to_i}"
   end
   # GET /resource/edit
   # def edit
