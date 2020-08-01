@@ -25,7 +25,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
   def sign_up_user_params
-    brithdate = birthday_join
     params.require(:user).permit(:nickname, :email, :password, :password_confirmation,:family_name, :first_name, :family_name_kana, :first_name_kana).merge(brithdate: brithdate)
   end
 
