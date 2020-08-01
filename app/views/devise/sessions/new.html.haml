@@ -1,0 +1,30 @@
+.login
+  .panel
+    .no-accunt
+      %p.no-accunt__info
+        アカウントをお持ちでない方はこちら
+      = link_to new_registration_path(resource_name), class: "no-accunt__link" do
+        新規会員登録
+    .login-sns
+      = button_tag type: 'submit', class: "login-sns__google" do
+        = image_tag '/assets/google-icon.png', alt: 'G', class: 'login-sns__google__image'
+        Googleでログインする
+      = button_tag type: 'submit', class: "login-sns__facebook" do
+        = icon('fab', 'facebook-square', class: "login-sns__facebook__icon")
+        Facebookでログインする
+      = button_tag type: 'submit', class: "login-sns__apple" do
+        = icon('fab', 'apple', class: "login-sns__apple__icon")
+        Appleでログインする
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .login-form
+        .login-form__email
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "input-field"
+        .login-form__password
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "input-field"
+        - if devise_mapping.rememberable?
+          .login-form__remember-me
+            = f.check_box :remember_me, class: "login-form__remember-me__check-box"
+            = f.label :ログイン状態を保持する, class: "login-form__remember-me__label"
+        .login-form__btn
+          = f.submit "ログイン",class: "login-form__btn__action"
+        = link_to "パスワードをお忘れの方", new_password_path(resource_name), class: "forget-password"
