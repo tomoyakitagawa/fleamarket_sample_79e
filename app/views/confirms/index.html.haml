@@ -1,0 +1,79 @@
+.confirms-page
+  .confirms-header
+    = link_to root_path do
+      = image_tag("logo.png", width: "200px")
+    
+  .confirms-main
+    .confirms-contents
+      %section.purchase_detail
+        %h2.purchase_detail__title
+          購入内容の確認
+
+      %section.buy_item
+        .buy_item__box
+          = image_tag("buy_item.png", class: "buy_item__box__image")
+          .buy_item__box__group
+            .buy_item__box__group__name
+              商品名 令和最新バージョン超スーパーハイパーデニム
+            .buy_item__box__group__price
+              .buy_item__box__group__price__shipping_fee_including_tax
+                送料込み (税込)
+              .buy_item__box__group__price__amount
+                ￥32,000
+
+      %section.pay_amount
+        .pay_amount__group
+          .pay_amount__group__titel
+            支払い金額
+          .pay_amount__group__payment
+            ￥32,000
+        .pay_amount__point
+          .pay_amount__point__list
+            = icon("fas", "stop", class: "pay_amount__point__list__icon")
+            = image_tag("point-logo.png", class: "pay_amount__point__list__logo")
+            .pay_amount__point__list__name
+              ポイント
+          .pay_amount__point__ownership_point
+            所持ポイント : P0
+
+      %section.select
+        .select__group
+          .select__group__title
+            %h3.select__group__title__char
+              支払い方法
+        = link_to "", class: "select__registration" do
+          = icon("fas", "plus-circle", class: "select__registration__icon")
+          %span.select__registration__title
+            登録してください
+      %section.select
+        .select__group
+          .select__group__title
+            %h3.select__group__title__char
+              配送先
+        = link_to "", class: "select__registration" do
+          = icon("fas", "plus-circle", class: "select__registration__icon")
+          %span.select__registration__title
+            登録してください
+
+      %section.purchase
+        .purchase__group
+          %P.purchase__group__description
+            郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください
+          %p.purchase__group__attention
+            配送先と支払い方法の入力を完了してください。
+          %button.purchase__group__style_button{"data-test" => "transaction-buy-purchase", :disabled => "", :tabindex => "-1", :type => "button"} 購入する
+
+  .confirms-footer
+    .terms
+      %ul.terms__list
+        %li.terms__list__privacy_policy
+          = link_to "プライバシーポリシー", "#", class: "terms-link"
+        %li.terms__list__of_use
+          = link_to "フリマ利用規約", "#", class: "terms-link"
+        %li.terms__list__law
+          = link_to "特定商取引に関する表記", "#", class: "terms-link"
+
+    = link_to root_path do
+      = image_tag("point-logo.png", class: "footer-logo")
+    %P.company-inc
+      © FURIMA, Inc.
