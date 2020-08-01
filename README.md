@@ -5,6 +5,11 @@
 |nickname|string|null: false, unique: true|
 |email|string|null: false, unique: true|
 |password|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birthdate|date|null: false|
 
 ### Association
 - has_many :user_evaluations
@@ -18,13 +23,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|family_name|string|null: false|
-|first_name|string|null: false|
-|family_name_kana|string|null: false|
-|first_name_kana|string|null: false|
-|birth_year|date|null: false|
-|birth_month|date|null: false|
-|birth_day|date|null: false|
 |avatar|string||
 |introduction|text||
 |user_id|references|null: false, foreign_key: true|
@@ -44,7 +42,7 @@
 ### Association
 - belongs_to :user
 
-## delivery_addressテーブル
+## delivery_addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |delivery_family_name|string|null: false|
@@ -52,7 +50,7 @@
 |delivery_family_name_kana|string|null: false|
 |delivery_first_name_kana|string|null: false|
 |post_code|integer(7)|null: false|
-|prefecture_id|references|null: false, foreign_key: true|
+|prefecture_id|integer|null: false|
 |city|string|null: false|
 |home_number|string|null: false|
 |building_name|string||
