@@ -1,2 +1,218 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.erb
+
+.main_visual_create-one
+  .main_visual_create-one__body-main
+    .main_visual_create-one__body-main--top
+      %p 人生を変えるフリマアプリ
+    .main_visual_create-one__body-main--middle
+      %p FURIMAはだれでもかんたんに出品・購入できる
+      %p フリマアプリです
+    .main_visual_create-one__body-main--btn
+      = link_to "#", class: "icon" do
+        = image_tag 'bag_app.png',class: "appBtn"
+      = link_to "#", class: "icon" do
+        = image_tag 'google-play-badge.png',class: "googleBtn"
+  
+
+.top_introduction__box
+  .top_introduction__box__top
+    .top_introduction__box__top--title
+      FURIMAが選ばれる3つの理由
+    .top_introduction__box__top--line
+  %ul.top_introduction__box__mains
+    %li.top_introduction__box__mains__main
+      = image_tag "pict-reason-01.jpg", class: "top-img"
+      .top_introduction__box__mains__main--sub-title
+        .top_introduction__box__mains__main--sub-title--green
+          3分
+          %span.top_introduction__box__mains__main--sub-title--black
+            ですぐに出品
+      %p.top_introduction__box__mains__main--text
+        スマホで入力するだけで簡単に出品できる！
+      .top_introduction__box__mains__main--num
+        1
+    %li.top_introduction__box__mains__main
+      = image_tag "pict-reason-02.jpg", class: "top-img"
+      .top_introduction__box__mains__main--sub-title
+        .top_introduction__box__mains__main--sub-title--green
+          シンプル
+          %span.top_introduction__box__mains__main--sub-title--black
+            で使いやすい
+      %p.top_introduction__box__mains__main--text
+        めんどくさい入力は必要なく、検索も購入もスムーズ！
+      .top_introduction__box__mains__main--num
+        2
+    %li.top_introduction__box__mains__main-right
+      = image_tag "pict-reason-03.jpg", class: "top-img"
+      .top_introduction__box__mains__main--right--sub-title
+        .top_introduction__box__mains__main--sub-title--black
+          手数料
+          %span.top_introduction__box__mains__main--sub-title--green
+            業界最安
+      %p.top_introduction__box__mains__main-right--text
+        最大3%でお得に出品&購入！
+      .top_introduction__box__mains__main-right--num
+        3
+
+.top_middle__block
+  .top_middle__block__in-box
+    .top_middle__block__in-box__title
+      会員数日本一位
+    .top_middle__block__in-box__text
+      .top_middle__block__in-box__text--1
+        FURIMAは、フリマアプリで最も人気。
+      .top_middle__block__in-box__text--2
+        出品・購入回数も業界最多です！
+      .top_middle__block__in-box__text--3
+        欲しかったあの商品に出会えるかもしれません。
+    .top_middle__block__in-box__icon
+      = link_to "#", class: "in-box__icon" do
+        = image_tag 'bag_app.png',class: "appBtn"
+      = link_to "#", class: "in-box__icon" do
+        = image_tag 'ja_badge_web_generic.png',class: "googleBtn"
+    
+.top_key_features__containerFeatures
+  %h2.top_key_features__head__title
+    FURIMAの特徴
+  .top_key_features__containerFeatures__items
+    .top_key_features__containerFeatures__items__list
+      %figure.top_key_features__containerFeatures__images
+        = image_tag "icon-01.png", class: "top_key_features__containerFeatures__images__image"
+      %h3.top_key_features__item__subtitle
+        簡単に売り買いできる
+      %p.top_key_features__item__detail
+        スマホ１つで、いつでもどこでも簡単に出品、購入が可能！
+    .top_key_features__containerFeatures__items__list
+      %figure.top_key_features__containerFeatures__images
+        = image_tag "icon-03.png", class: "top_key_features__containerFeatures__images__image"
+      %h3.top_key_features__item__subtitle
+        売上金は即日振り込みに対応
+      %p.top_key_features__item__detail
+        午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+    .top_key_features__containerFeatures__items__list
+      %figure.top_key_features__containerFeatures__images
+        = image_tag "icon-04.png", class: "top_key_features__containerFeatures__images__image"
+      %h3.top_key_features__item__subtitle
+        様々な支払いに対応
+      %p.top_key_features__item__detail
+        お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+    
+        
+.pickup_brand__containerBrand
+  %h2.pickup_brand__containerBrand__title
+    ピックアップブランド
+  .pickup_brand__containerBrand__product
+  .pickup_brand__containerBrand__product__head
+    = link_to "#", class: "pickup_brand__products--head" do
+      %h3.pickup_brand__head 新規投稿商品
+  .pickup_brand__containerBrand__product--lists
+    
+    .pickup_brand__containerBrand__product--lists__list
+      %figure.pickup_brand__product__images
+        = image_tag "member_photo_noimage_thumb.png", class:"pickup_brand__product__images--image"
+      
+      .pickup_brand__containerBrand__product--lists__list__body
+        %h3.pickup_brand__product--name
+          niconico
+        .pickup_brand__containerBrand__product--lists__list__body__details
+          %ul.pickup_brand__details__menu
+            %li
+              = "8600円"
+            %li ★
+        %p.pickup_brand__taxIncluded （税込）
+    .pickup_brand__containerBrand__product--lists__list
+      %figure.pickup_brand__product__images
+        = image_tag "member_photo_noimage_thumb.png", class:"pickup_brand__product__images--image"
+      
+      .pickup_brand__containerBrand__product--lists__list__body
+        %h3.pickup_brand__product--name
+          nicobag
+        .pickup_brand__containerBrand__product--lists__list__body__details
+          %ul.pickup_brand__details__menu
+            %li
+              = "528000円"
+            %li ★
+        %p.pickup_brand__taxIncluded （税込）
+    .pickup_brand__containerBrand__product--lists__list
+      %figure.pickup_brand__product__images
+        = image_tag "member_photo_noimage_thumb.png", class:"pickup_brand__product__images--image"
+      
+      .pickup_brand__containerBrand__product--lists__list__body
+        %h3.pickup_brand__product--name
+          niconicokun
+        .pickup_brand__containerBrand__product--lists__list__body__details
+          %ul.pickup_brand__details__menu
+            %li
+              = "8800円"
+            %li ★
+        %p.pickup_brand__taxIncluded （税込）
+
+.pickup_brand__containerBrand
+  %h2.pickup_brand__containerBrand__title
+    ピックアップカテゴリー
+  .pickup_brand__containerBrand__product
+  .pickup_brand__containerBrand__product__head
+    = link_to "#", class: "pickup_brand__products--head" do
+      %h3.pickup_brand__head アーカイバ
+  .pickup_brand__containerBrand__product--lists
+    
+    .pickup_brand__containerBrand__product--lists__list
+      %figure.pickup_brand__product__images
+        = image_tag "member_photo_noimage_thumb.png", class:"pickup_brand__product__images--image"
+      
+      .pickup_brand__containerBrand__product--lists__list__body
+        %h3.pickup_brand__product--name
+          niconico
+        .pickup_brand__containerBrand__product--lists__list__body__details
+          %ul.pickup_brand__details__menu
+            %li
+              = "8600円"
+            %li ★
+        %p.pickup_brand__taxIncluded （税込）
+    .pickup_brand__containerBrand__product--lists__list
+      %figure.pickup_brand__product__images
+        = image_tag "member_photo_noimage_thumb.png", class:"pickup_brand__product__images--image"
+      
+      .pickup_brand__containerBrand__product--lists__list__body
+        %h3.pickup_brand__product--name
+          nicobag
+        .pickup_brand__containerBrand__product--lists__list__body__details
+          %ul.pickup_brand__details__menu
+            %li
+              = "528000円"
+            %li ★
+        %p.pickup_brand__taxIncluded （税込）
+    .pickup_brand__containerBrand__product--lists__list
+      %figure.pickup_brand__product__images
+        = image_tag "member_photo_noimage_thumb.png", class:"pickup_brand__product__images--image"
+      
+      .pickup_brand__containerBrand__product--lists__list__body
+        %h3.pickup_brand__product--name
+          niconicokun
+        .pickup_brand__containerBrand__product--lists__list__body__details
+          %ul.pickup_brand__details__menu
+            %li
+              = "8800円"
+            %li ★
+        %p.pickup_brand__taxIncluded （税込）
+
+
+.app_banner__banner
+  %section.app_banner__banner__image
+  .app_banner__banner__inner
+    %h2.app_banner__banner__inner--title
+      だれでも簡単、人生を変えるフリマアプリ
+    %p.app_banner__banner__inner--text
+      今すぐ無料ダウンロード
+    .app_banner__banner__inner--icon
+      = link_to "#", class: "app_banner__banner__inner--icon" do
+        = image_tag 'bag_app.png',class: "appBtn"
+      = link_to "#", class: "app_banner__banner__inner--icon" do
+        = image_tag 'ja_badge_web_generic.png',class: "googleBtn"
+
+
+
+
+
+
+
+
