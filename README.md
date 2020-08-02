@@ -80,7 +80,7 @@
 |name|string|null: false|
 |explanation|text|null: false|
 |category|references|null: false, foreign_key: true|
-|brand|references|foreign_key: true|
+|brand|string||
 |condition_id|integer|null: false|
 |postage_id|integer|null: false|
 |prefecture_id|integer|null: false|
@@ -94,7 +94,6 @@
 - belongs_to :user_evaluation
 - belongs_to_active_hash :prefecture
 - belongs_to :category
-- belongs_to :brand
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :postage
 - belongs_to_active_hash :prepare
@@ -115,14 +114,6 @@
 |------|----|-------|
 |name|string|null: false|
 |ancestry|string||
-
-### Association
-- has_many :items
-
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
 
 ### Association
 - has_many :items
