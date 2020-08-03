@@ -133,4 +133,4 @@
 |name|string|null: false|
 
 ### Association
-- has_many :items
+- has_many :items 
