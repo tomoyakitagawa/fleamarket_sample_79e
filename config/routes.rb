@@ -1,4 +1,6 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw d品出
+  root 'dispray#index'
+  devise_for users
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
