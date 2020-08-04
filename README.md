@@ -54,7 +54,7 @@
 |city|string|null: false|
 |home_number|string|null: false|
 |building_name|string||
-|phone_number|integer|unique: true|
+|phone_number|string|unique: true|
 |user|references|null: false, foreign_key: true|
 
 ### Association

@@ -1,0 +1,4 @@
+// エラーメッセージが表示される際のビューの乱れの原因であるfield_with_errorsを消す
+.field_with_errors {
+  display: contents;
+}
