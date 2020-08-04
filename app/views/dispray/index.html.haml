@@ -1,165 +1,152 @@
-
 .listingpage
   .top
-    .logo
-      = link_to root_path do
-        = image_tag 'logo.png', class: 'merukari'
+    = link_to root_path, class: 'top__link' do
+      = image_tag 'logo.png', class: 'top__link__image'
 
   .short
     .middle
-      .a
-        .photo
-          .label
-            出品画面
-          .redlabel
+      .image-container
+        .container-item
+          %label.label
+            出品画像
+          %span.redlabel
             必須
-        
-        .update
+        %p.image-container__message
           最大10枚までアップロードできます
-        
-        .data
-          .data__square
-            .data__square__photo
-              .data2
-                .photologo
-                  = link_to root_path do
-                    = image_tag 'icon_camera.png', class: 'camera'
-                .moji
-                  ドラッグアンドドロップ
-                  %br/
-                  またはクリックしてダウンロード
+        .image-upload
+          .image-upload__prev
+          .image-upload__register
+            %label.image-upload__register__box
+              = image_tag 'icon_camera.png', class: 'image-upload__register__box__image', size: "24x24"
+              %span.image-upload__register__box__span
+                クリックしてアップロード
+              %input.image-upload__register__box__input{type: "file"}
       
-      .b
-        .itemname
-          .label
+      .item-container
+        .container-item
+          %label.label
             商品名
-          .redlabel
+          %span.redlabel
             必須
-
-        .stylefield
-          .stylearea
-            %input.login-input-text{:name => "area", :placeholder => "40文字まで", :type => "text", :class => "area"}/
-      
-        .item
-          .setumei
-            .label
-              商品の説明
-            .redlabel
-              必須
-
-          %textarea.style_textarea{:name => "description", :placeholder => "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n          ", :rows => "7"}
-
-          .mojisu
-            0/100
+        .item-name
+          %input.item-name__input{ name: "area", placeholder: "40文字まで", type: "text" }
+        .container-item
+          %label.label
+            商品の説明
+          %span.redlabel
+            必須
+        .item-explanation
+          %textarea.item-explanation__field{name: "description", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n          ", rows: "7"}
+          %p.item-explanation__limit
+            0/1000
         
-      .c
-        .itemdetail
-          .detail
-            商品詳細
-        .kategori
-          .label
+      .detail-container
+        %p.container-title
+          商品の詳細
+        .container-item
+          %label.label
             カテゴリ
-          .redlabel
+          %span.redlabel
             必須
-        
-        .select
-          選択してください
-          
-        .brand
-          .label
+        .container-select
+          %select.container-select__form
+            %option.container-select__form__option
+              選択してください
+        .container-item
+          %label.label
             ブランド
-          .graylabel
+          %span.graylabel
             任意
-
-        .syaneru
-          %input.rei{:autocomplete => "off", :name => "brandName", :placeholder => "例）シャネル", :type => "text", :value => ""}/
-        
-        .status
-          .label
+        .brand-form
+          %input.brand-form__box{autocomplete: "off", name: "brandName", placeholder: "例）シャネル", type: "text", value: ""}
+        .container-item
+          %label.label
             商品の状態
-          .redlabel
+          %span.redlabel
             必須
-        
-        .select
-          選択してください
+        .container-select
+          %select.container-select__form
+            %option.container-select__form__option
+              選択してください
 
-      .d
-        .haisou
-          .detail
-            配送について
-      
-        .futan
-          .label
+      .send-container
+        %p.container-title
+          配送について
+        .container-item
+          %label.label
             配送の負担
-          .redlabel
+          %span.redlabel
             必須
-        
-        .okuru
-          選択してください
-        
-        .delivery
-          .label
+        .container-select
+          %select.container-select__form
+            %option.container-select-form__option
+              選択してください
+        .container-item
+          %label.label
             配送の地域
-          .redlabel
+          %span.redlabel
             必須
-        
-        .select
-          選択してください
-
-        .date
-          .label
+        .container-select
+          %select.container-select__form
+            %option.container-select-form__option
+              選択してください
+        .container-item
+          %label.label
             発送までの日数
-          .redlabel
+          %span.redlabel
             必須
+        .container-select
+          %select.container-select__form
+            %option.container-select-form__option
+              選択してください
         
-        .select
-          選択してください
-        
-      .e
-        .price
+      .price-container
+        %p.container-title
           価格（¥300〜9,999,999）
-        .selling
-          .pricearea
-            .sellingprice
-              .label
+        .selling-form
+          .selling-form__price
+            .selling-form__price__label
+              %label.label
                 販売価格
-              .redlabel
+              %span.redlabel
                 必須
-            .dd
-              .many
+            .selling-form__price__input
+              %p.selling-form__price__input__yen
                 ¥
-              .pricefield
-                %input.priceselect{:autocomplete => "off", :name => "price", :placeholder => "0", :type => "number", :value => ""}/
-          
-          .feearea
-            .fee
+              .selling-form__price__input__field
+                %input.selling-form__price__input__field__box{autocomplete: "off", name: "price", placeholder: "0", type: "number", value: ""}
+          .selling-form__fee
+            %p.selling-form__fee__message
               販売手数料（10%）
-          
-          .rieki
-            .hanbairieki
+            %p.selling-form__fee__price
+              ー
+          .selling-form__profit
+            %p.selling-form__profit__message
               販売利益
+            %p.selling-form__profit__price
+              ー
           
-          .btn
-            .submit
-              %input.submit--btn{"data-disable-with" => "出品する", :name => "commit", :type => "submit", :value => "出品する"}/
-              %button.draft{:tabindex => "0", :type => "button"} 下書きに保存
-              .back
-                もどる
+      .submit-container 
+        .submit-container__btn
+          %input.submit-container__btn__submit{type: "submit", value: "出品する"}
+        .submit-container__back
+          = link_to '#', class: 'submit-container__back__btn' do
+            もどる
           
-          .notes
-            .font
-              禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+      .notes-container
+        %p.notes-container__message
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 
   .under
-    .listes
-      %ul.sc-fUdGnz.htGrsx
-        %li.sc-giOsra.fjVLsR
+    .under__box
+      %ul.under__box__list
+        %li.under__box__list__message
           プライバシーポリシー
-        %li.sc-giOsra.fjVLsR
+        %li.under__box__list__message
           メルカリ利用規約
-        %li.sc-giOsra.fjVLsR
-          特定商取引に関する表記
-    .logo
-      = link_to root_path do
-        = image_tag 'logo.png', class: 'merukari1'
+        %li.under__box__list__message
+          特定商取引に関する表示
+    = link_to '#', class: 'under__logo' do
+      = image_tag 'logo.png', class: 'under__logo__image', size: "140x55"
+    %p.under__name ©️FURIMA
 
