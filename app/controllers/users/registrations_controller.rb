@@ -11,35 +11,43 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.new(sign_up_user_params)
+    @user = User.new(sign_up_params)
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
-    if @user.save
-      redirect_to root_path
-    else
-      render :new and return
-    end
+    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    @address = @user.build_delivery_address
+    render :new_delivery_address
   end
 
-  private
-  def sign_up_user_params
-    birthdate = birthday_join
-    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :family_name, :first_name, :family_name_kana, :first_name_kana).merge(birthdate: birthdate)
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = DeliveryAddress.new(delivery_address_params)   
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_delivery_addresss and return
+    end
+    @user.build_delivery_address(@address.attributes)
+    @user.save
+    session["devise.regist_data"]["user"].clear
+    sign_in(:user, @user)
   end
+
+  # private
+
+  # def sign_up_user_params
+  #   # birthdate = birthday_join
+  #   params.require(:user).permit(:nickname, :email, :password, :password_confirmation,:family_name, :first_name, :family_name_kana, :first_name_kana, :birthdate)
+  # end
 
   # 誕生日の送られてくるデータを「yyyy-mm-dd」の形に変換
-  def birthday_join
-    date = params[:user]
-
-    if date["birthday(1i)"].empty? && date["birthday(2i)"].empty? && date["birthday(3i)"].empty?
-      return
-    end
-
-    birthday = Date.new(date["birthday(1i)"].to_i, date["birthday(2i)"].to_i, date["birthday(3i)"].to_i)
-    birthday.strftime("%Y-%m-%d")
-  end
+  # def birthday_join
+  #   date = params[:user]
+  #   birthday = Date.new(date["birthdate(1i)"].to_i, date["birthdate(2i)"].to_i, date["birthdate(3i)"].to_i)
+  #   birthday.strftime("%Y-%m-%d")
+  # end
   # GET /resource/edit
   # def edit
   #   super
@@ -64,7 +72,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  private
+
+  def delivery_address_params
+    params.require(:delivery_address).permit(:delivery_family_name, :delivery_first_name, :delivery_family_name_kana, :delivery_first_name_kana, :post_code, :prefecture_id, :city, :home_number, :building_name, :phone_number)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
