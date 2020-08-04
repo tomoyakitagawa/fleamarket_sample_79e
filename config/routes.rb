@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-86d1e37119c0bc2950a9463b9f968232f80d7c71
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   } 
