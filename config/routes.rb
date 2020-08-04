@@ -11,4 +11,4 @@ Rails.application.routes.draw d品出
   resources :cards, only: [:index, :new]
   resources :logs, only: :index
   resources :delivery_address, only: :index
-end
+  end
