@@ -1,0 +1,247 @@
+* {
+  box-sizing: border-box;
+}
+
+.confirms-page {
+  background-color:#f5f5f5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.confirms-header {
+  height: 128px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.confirms-main {
+  background-color: rgb(255, 255, 255);
+  max-width: 700px;
+  width: 100%;
+  margin: 0px auto;
+}
+
+.confirms-contents {
+  position: relative;
+
+}
+
+.purchase_detail {
+  padding: 32px 16px;
+  max-width: 375px;
+  margin: 0px auto;
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  }
+}
+
+.buy_item {
+  border-top: 1px solid rgb(245, 245, 245);
+  max-width: 375px;
+  margin: 0px auto;
+  display: block;
+  padding-top: 30px;
+  padding: 32px 16px;
+  &__box {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    &__image {
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      height: 80px;
+      width: 80px;
+      -webkit-box-align: center;
+      align-items: center;
+    }
+    &__group {
+      width: 100%;
+      margin-left: 16px;
+      &__name {
+        font-size: 14px;
+        line-height: 1.4em;
+        margin-bottom: 8px;
+      }
+      &__price {
+        justify-content: flex-end;
+        display: flex;
+        &__shipping_fee_including_tax {
+          font-size: 12px;
+          line-height: 25px;
+        }
+        &__amount {
+          font-size: 15px;
+          font-weight: 600;
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+}
+
+.pay_amount {
+  border-top: 1px solid rgb(245, 245, 245);
+  padding: 32px 16px;
+  max-width: 375px;
+  margin: 0px auto;
+  display: block;
+  &__group {
+    display: flex;
+    font-size: 18px;
+    font-weight: 600;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 24px;
+    &__payment {
+      font-size: 24px;
+    }
+  }
+  &__point {
+    font-size: 14px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    &__list {
+      cursor: not-allowed;
+      &__icon {
+        color: #888;
+        cursor: default;
+      }
+      &__logo {
+        height: 12pxx;
+        width: 12px;
+        margin: 0 2px;
+      }
+      &__name {
+        display: inline-block;
+        font-weight: 600;
+        line-height: 1.4em;
+        vertical-align: middle;
+      }
+    }
+    &__ownership_point {
+      font-size: 12px;
+      text-align: right;
+      line-height: 1.6;
+      max-width: 145px;
+    }
+  }
+}
+
+.select {
+  border-top: 1px solid rgb(245, 245, 245);
+  padding: 32px 16px;
+  max-width: 375px;
+  margin: 0px auto;
+  display: block;
+  &__group {
+    &__title {
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      &__char {
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
+  &__registration {
+    color: rgb(0, 149, 238);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    opacity: 1;
+    pointer-events: auto;
+    text-decoration: none;
+    &__icon {
+      box-sizing: border-box;
+      width: 16px;
+      height: 16px;
+      fill: rgb(0, 149, 238);
+      fill-rule: evenodd;
+      overflow: hidden;
+    }
+    &__title {
+      margin-left: 4px;
+      font-size: 14px;
+    }
+  }
+}
+
+.purchase {
+  padding: 32px 16px 56px;
+  border-top: 1px solid rgb(245, 245, 245);
+  max-width: 375px;
+  margin: 0px auto;
+  &__group {
+    &__description {
+      color: rgb(136, 136, 136);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    &__attention {
+      color: rgb(255, 2, 17);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    &__style_button {
+      background-color: #ccc;
+      color: #888;
+      cursor: default;
+      width: 100%;
+      font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
+      font-size: 17px;
+      min-height: 48px;
+      padding: 0 24px;
+    }
+  }
+}
+
+.confirms-footer {
+  padding: 40px 0px 41px;
+  margin-top: auto;
+  text-align: center;
+}
+
+.terms {
+  margin-bottom: 30px;
+  &__list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    font-size: 12px;
+    &__of_use {
+      margin: 0 20px;
+    }
+  }
+}
+
+.terms-link {
+  text-decoration: none;
+  color: #333 !important;
+}
+
+.footer-logo {
+  height: 65px;
+  margin-bottom: 8px;
+  width: 80px;
+  vertical-align: middle;
+}
+
+.company-inc {
+  font-size: 12px;
+}
