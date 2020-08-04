@@ -15,4 +15,8 @@ Rails.application.routes.draw d品出
   resources :mypages, only: :index
   resources :cards, only: [:index, :new]
   resources :logs, only: :index
-end
+  resources :delivery_address, only: :index
+  end
+
+
+
