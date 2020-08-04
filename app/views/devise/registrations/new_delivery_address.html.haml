@@ -8,7 +8,7 @@
     %section.delivery_address-container
       %h2.delivery_address-head
         商品送付先入力
-      = form_with model: @user, url:"", class:"delivery_address-form", local: true do |f|
+      = form_with model: @address, url: addresses_path,method: :post, class:"delivery_address-form", local: true do |f|
         .delivery_address-content
           .delivery_address-label
             = f.label "お名前(全角)", class: "addlress-form-label"
@@ -40,22 +40,22 @@
             = f.label "市区町村", class: "addlress-form-label"
             %span.delivery_address-require
               必須
-          = f.text_field :"city", class: "delivery_address-input-default", placeholder: "例)渋谷区"
+          = f.text_field :city, class: "delivery_address-input-default", placeholder: "例)渋谷区"
           .delivery_address-label
             = f.label "番地", class: "addlress-form-label"
             %span.delivery_address-require
               必須
-          = f.text_field :"home_number", class: "delivery_address-input-default", placeholder: "例)円山町1-1-1"
+          = f.text_field :home_number, class: "delivery_address-input-default", placeholder: "例)円山町1-1-1"
           .delivery_address-label
             = f.label "建物名", class: "addlress-form-labe"
             %span.delivery_address-require__optionall
               任意
-          = f.text_field :"building_name", class: "delivery_address-input-default", placeholder: "例)青山ビル101"
+          = f.text_field :building_name, class: "delivery_address-input-default", placeholder: "例)青山ビル101"
           .delivery_address-label
             = f.label "電話", class: "addlress-form-labe"
             %span.delivery_address-require__optionall
               任意
-          = f.text_field :"phone_number", class: "delivery_address-input-default", placeholder: "例)09012345678"
+          = f.text_field :phone_number, class: "delivery_address-input-default", placeholder: "例)09012345678"
 
           = f.submit "ユーザー登録", class: "user_registration-btn"
 
