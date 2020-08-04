@@ -48,7 +48,6 @@
     &--line {
       height: 4px;
       width: 70px;
-      //background-color: light_green;
       margin: 0 auto;
     }
   }
@@ -83,10 +82,8 @@
         font-size: 18px;
       }
       &--num {
-        //background-color: $light_green;
         padding: 10px 20px;
         font-size: 30px;
-        //color: $white;
         height: 55px;
         width: 55px;
         border-radius: 4%;
@@ -107,10 +104,8 @@
         font-size: 18px;
       }
       &--num {
-        //background-color: $light_green;
         padding: 10px 20px;
         font-size: 30px;
-        //color: $white;
         height: 55px;
         width: 55px;
         border-radius: 4%;
@@ -166,7 +161,6 @@
       content: "";
       width: 70px;
       height: 4px;
-      //background-color: $light_green;
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -178,7 +172,6 @@
     width: 100%;
     margin: 0 auto;
     display: flex;
-    //flex-wrap: wrap;
     &__list{
       display: flex;
       flex-direction: column;
