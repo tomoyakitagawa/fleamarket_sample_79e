@@ -1,2 +1,0 @@
-module DeliveryAddressHelper
-end
