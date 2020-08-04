@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-  root 'dispray#index'
+  root 'items#index'
   resources :confirms, only: :index
   resources :details, only: :index
   resources :mypages, only: :index
