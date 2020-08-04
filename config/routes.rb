@@ -1,9 +1,8 @@
-Rails.application.routes.draw do 
-  # root 'dispray#index'
-  # devise_for users
+Rails.application.routes.draw do
+86d1e37119c0bc2950a9463b9f968232f80d7c71
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-  }
+  } 
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_delivery_address'
     post 'addresses', to: 'users/registrations#create_address'
