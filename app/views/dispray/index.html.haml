@@ -1,0 +1,165 @@
+
+.listingpage
+  .top
+    .logo
+      = link_to root_path do
+        = image_tag 'logo.png', class: 'merukari'
+
+  .short
+    .middle
+      .a
+        .photo
+          .label
+            出品画面
+          .redlabel
+            必須
+        
+        .update
+          最大10枚までアップロードできます
+        
+        .data
+          .data__square
+            .data__square__photo
+              .data2
+                .photologo
+                  = link_to root_path do
+                    = image_tag 'icon_camera.png', class: 'camera'
+                .moji
+                  ドラッグアンドドロップ
+                  %br/
+                  またはクリックしてダウンロード
+      
+      .b
+        .itemname
+          .label
+            商品名
+          .redlabel
+            必須
+
+        .stylefield
+          .stylearea
+            %input.login-input-text{:name => "area", :placeholder => "40文字まで", :type => "text", :class => "area"}/
+      
+        .item
+          .setumei
+            .label
+              商品の説明
+            .redlabel
+              必須
+
+          %textarea.style_textarea{:name => "description", :placeholder => "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n          ", :rows => "7"}
+
+          .mojisu
+            0/100
+        
+      .c
+        .itemdetail
+          .detail
+            商品詳細
+        .kategori
+          .label
+            カテゴリ
+          .redlabel
+            必須
+        
+        .select
+          選択してください
+          
+        .brand
+          .label
+            ブランド
+          .graylabel
+            任意
+
+        .syaneru
+          %input.rei{:autocomplete => "off", :name => "brandName", :placeholder => "例）シャネル", :type => "text", :value => ""}/
+        
+        .status
+          .label
+            商品の状態
+          .redlabel
+            必須
+        
+        .select
+          選択してください
+
+      .d
+        .haisou
+          .detail
+            配送について
+      
+        .futan
+          .label
+            配送の負担
+          .redlabel
+            必須
+        
+        .okuru
+          選択してください
+        
+        .delivery
+          .label
+            配送の地域
+          .redlabel
+            必須
+        
+        .select
+          選択してください
+
+        .date
+          .label
+            発送までの日数
+          .redlabel
+            必須
+        
+        .select
+          選択してください
+        
+      .e
+        .price
+          価格（¥300〜9,999,999）
+        .selling
+          .pricearea
+            .sellingprice
+              .label
+                販売価格
+              .redlabel
+                必須
+            .dd
+              .many
+                ¥
+              .pricefield
+                %input.priceselect{:autocomplete => "off", :name => "price", :placeholder => "0", :type => "number", :value => ""}/
+          
+          .feearea
+            .fee
+              販売手数料（10%）
+          
+          .rieki
+            .hanbairieki
+              販売利益
+          
+          .btn
+            .submit
+              %input.submit--btn{"data-disable-with" => "出品する", :name => "commit", :type => "submit", :value => "出品する"}/
+              %button.draft{:tabindex => "0", :type => "button"} 下書きに保存
+              .back
+                もどる
+          
+          .notes
+            .font
+              禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+  .under
+    .listes
+      %ul.sc-fUdGnz.htGrsx
+        %li.sc-giOsra.fjVLsR
+          プライバシーポリシー
+        %li.sc-giOsra.fjVLsR
+          メルカリ利用規約
+        %li.sc-giOsra.fjVLsR
+          特定商取引に関する表記
+    .logo
+      = link_to root_path do
+        = image_tag 'logo.png', class: 'merukari1'
+

@@ -116,4 +116,5 @@
 |ancestry|string||
 
 ### Association
+
 - has_many :items
