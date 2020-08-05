@@ -27,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @address = DeliveryAddress.new(delivery_address_params)   
     unless @address.valid?
       flash.now[:alert] = @address.errors.full_messages
-      render :new_delivery_addresss and return
+      render :new_delivery_address and return
     end
     @user.build_delivery_address(@address.attributes)
     @user.save
