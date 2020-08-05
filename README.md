@@ -12,7 +12,6 @@
 |birthdate|date|null: false|
 
 ### Association
-- has_many :user_evaluations
 - has_many :seller_items, class_name: 'item', foreign_key: 'seller_id'
 - has_many :buyer_items, class_name: 'item', foreign_key: 'buyer_id'
 - has_one :profile, dependent: :destroy
@@ -61,19 +60,6 @@
 - belongs_to :user
 - belongs_to_active_hash :prefecture
 
-## user_evaluationsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|review|text|null: false|
-|evaluation_id|integer|null: false|
-|user|references|null: false, foreign_key: true|
-|item|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to_active_hash :evaluation
-- belongs_to :item
-
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -91,7 +77,6 @@
 
 ### Association
 - has_many :item_images, dependent: :destroy
-- belongs_to :user_evaluation
 - belongs_to_active_hash :prefecture
 - belongs_to :category
 - belongs_to_active_hash :condition
