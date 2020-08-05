@@ -1,6 +1,5 @@
-Rails.application.routes.draw d品出
+Rails.application.routes.draw do
   root 'dispray#index'
-  devise_for users
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -9,7 +8,6 @@ Rails.application.routes.draw d品出
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-  root 'items#index'
   resources :confirms, only: :index
   resources :details, only: :index
   resources :mypages, only: :index
