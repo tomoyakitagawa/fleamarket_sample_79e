@@ -1,0 +1,298 @@
+* {
+  box-sizing: border-box;
+}
+
+.listingpage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .top {
+    height: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8;
+    &__link {
+      &__image {
+        /*text-align: center;*/
+        width: 185px;
+        height: 49px;
+      }
+    }
+  }
+      
+  .short {
+    background-color: #f8f8f8;
+    .middle {
+      margin: 0px auto;
+      padding-bottom: 40px;
+      max-width: 700px;
+      width: 100%;
+      background-color: #fff;
+      .image-container {
+        padding: 40px;
+        border-bottom: 1px solid #dedede;
+        &__message {
+          margin-bottom: 16px;
+          font-size: 14px;
+          line-height: 1.4em;
+          }
+        .image-upload {
+          height: 150px;
+          &__register {
+            width: 620px;
+            background-color: #f8f8f8;
+            border: 1px dashed #dedede;
+            &__box {
+              display: block;
+              width: 100%;
+              height: 150px;
+              position: relative;
+              &__image {
+                position: absolute;
+                top: 30%;
+                right: 50%;
+                transform: translate(50%, 0);
+              }
+              &__span {
+                font-size: 12px;
+                position: absolute;
+                top: 60%;
+                right: 50%;
+                transform: translate(50%, 0);
+              }
+              &__input {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      .item-container {
+        padding: 40px;
+        border-bottom: 1px solid #dedede;
+        .item-name {
+          margin-bottom: 16px;
+          &__input {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: inherit;
+            height: 48px;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+        }
+        .item-explanation {
+          &__field {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #222;
+            font-size: 16px;
+            outline: none;
+            padding: 13px 16px;
+            resize: vertical;
+            vertical-align: middle;
+          }
+          &__limit {
+            margin-top: 16px;
+            color: #888;
+            font-size: 12px;
+            line-height: 1.4em;
+            text-align: right;
+          }
+        }
+      }
+
+      .detail-container {
+        padding: 40px;
+        border-bottom: 1px solid #dedede;
+        .brand-form {
+          margin-bottom: 16px;
+          .brand-form__box {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: inherit;
+            height: 48px;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+        }
+      }
+
+      .send-container {
+        padding: 40px;
+        border-bottom: 1px solid #dedede;
+      }
+
+      .price-container {
+        padding: 40px;
+        .selling-form {
+          &__price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 46px;
+            padding: 12px 0px;
+            margin-bottom: 10px;
+            width: 100%;
+            &__input {
+              display: flex;
+              &__yen {
+                line-height: 46px;
+                margin-right: 10px;
+              }
+              &__field {
+                text-align: right;
+                &__box {
+                  text-align: right;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  height: 48px;
+                  outline: none;
+                  padding: 0 16px;
+                }
+              }
+            }
+          }
+          &__fee {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 46px;
+            padding: 12px 0px;
+            margin-bottom: 10px;
+            font-size: 14px;
+          }
+          &__profit {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 46px;
+            padding: 12px 0px;
+            margin-bottom: 10px;
+            font-size: 14px;
+          }
+        }
+      }
+
+      .submit-container {
+        width: 360px;
+        margin: 0px auto;
+        &__btn {
+          margin-bottom: 20px;
+          &__submit {
+            display: block;
+            width: 100%;
+            height: 50px;
+            background-color: #3CCACE;
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+          }
+        }
+        &__back {
+          text-align: center;
+          margin-bottom: 20px;
+          &__btn {
+            text-decoration: none;
+            color: #3CCACE;
+          }
+        }
+      }
+
+      .notes-container {
+        padding: 0px 40px;
+        &__message {
+          font-size: 12px;
+          line-height: 1.4em;
+        }
+      }
+    }
+  }
+
+  .under {
+    text-align: center;
+    height: 220px;
+    width: 100%;
+    padding: 40px 0;
+    background-color: #f8f8f8;
+    &__box {
+      &__list {
+        list-style: none;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+        &__message {
+          margin-right: 10px;
+        }
+      }
+    }
+    &__logo{
+      text-decoration: none;
+    }
+    &__name {
+      font-size: 12px;
+    }
+  }
+}
+
+// -----------------共通-----------------------
+
+.container-item {
+  margin-bottom: 16px;
+}
+
+.label{
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+
+.redlabel {
+  margin-left: 8px;
+  font-size: 12px;
+  padding: 3px 4px;
+  font-weight: 600;
+  background-color: red;
+  color: #fff;
+}
+
+.graylabel {
+  margin-left: 8px;
+  font-size: 12px;
+  padding: 3px 4px; 
+  font-weight: 600;
+  background-color: #bfbfbf;
+  color: #fff;
+}
+
+.container-title {
+  color: rgb(136, 136, 136);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+  margin-bottom: 24px;
+}
+
+.container-select {
+  margin-bottom: 16px;
+  &__form {
+    appearance: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #222;
+    height: 48px;
+    line-height: 1;
+    outline: none;
+    padding: 0 16px;
+    width: 100%;
+  }
+}
