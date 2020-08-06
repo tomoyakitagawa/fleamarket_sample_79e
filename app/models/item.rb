@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_many :item_images, dependent: :destroy #後でdependent: :destroyは削除する
-  belongs_to :category
+  has_many :categories
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :condition
   belongs_to_active_hash :postage
