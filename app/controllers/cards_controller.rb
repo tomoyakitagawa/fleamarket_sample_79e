@@ -10,7 +10,7 @@ class CardsController < ApplicationController
     if @card.present?
       # 登録している場合,PAY.JPからカード情報を取得する
       # PAY.JPの秘密鍵をセットする。
-      Payjp.api_key = ENV["sk_test_8777ce099f1e3a147acaa3be"]
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       # PAY.JPから顧客情報を取得する。
       customer = Payjp::Customer.retrieve(@card.payjp_id)
       # PAY.JPの顧客情報から、デフォルトで使うクレジットカードを取得する。
@@ -41,12 +41,12 @@ class CardsController < ApplicationController
 
     card = Card.where(user_id: current_user.id)
     # card.exists カードのデータが存在しているか
-    redirect_to action: "show" if card.exists?
+    redirect_to action: "index" if card.exists?
   end
 
   def create
     # PAY.JPの秘密鍵をセット（環境変数）
-    Payjp.api_key = ENV["sk_test_8777ce099f1e3a147acaa3be"]
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
 
     # jsで作成したpayjpTokenがちゃんと入っているか？
     if params['payjpToken'].blank?
@@ -74,7 +74,7 @@ class CardsController < ApplicationController
   def destroy     
     # 今回はクレジットカードを削除するだけでなく、PAY.JPの顧客情報も削除する。これによりcreateメソッドが複雑にならない。
     # PAY.JPの秘密鍵をセットして、PAY.JPから情報をする。
-    Payjp.api_key = ENV["sk_test_8777ce099f1e3a147acaa3be"]
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     # PAY.JPの顧客情報を取得
     customer = Payjp::Customer.retrieve(@card.payjp_id)
     customer.delete # PAY.JPの顧客情報を削除
