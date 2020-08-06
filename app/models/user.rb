@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, :email, presence: true, uniqueness: true
+  validates :nickname, :email, presence: true, uniqueness: { case_sensitive: true }
   validates :password, presence: true, length: { minimum: 7 }
   # 漢字と全角の平仮名とカタカナのバリデーション
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
