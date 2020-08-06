@@ -1,0 +1,38 @@
+.Mypage-main
+  .Mypage-main__contents
+    %section.Avatar
+      = link_to '#', class: 'Avatar__icon' do
+        %figure.Avatar__icon__image
+          = image_tag 'member_photo_noimage_thumb.png', size: "60x60"
+        %h2.Avatar__icon__name 
+          = @nickname
+        .Avatar__icon__number
+          .Avatar__icon__number__evaluation
+            %span 評価
+            %span 0
+          .Avatar__icon__number__sell
+            %span 出品数
+            %span 0
+
+  .Mypage-main__side
+    %nav.Nav
+      %h3.Nav__head マイページ
+      %ul.Nav__menu
+        %li.Nav__menu__list
+          = link_to '#', class: 'Nav__menu__list__item' do
+            出品する
+            = icon('fas', 'chevron-right')
+        %li.Nav__menu__list
+          = link_to '#', class: 'Nav__menu__list__item' do
+            評価一覧
+            = icon('fas', 'chevron-right')
+      %h3.Nav__head 設定
+      %ul.Nav__menu
+        %li.Nav__menu__list
+          = link_to cards_path, class: 'Nav__menu__list__item' do
+            支払い方法
+            = icon('fas', 'chevron-right')
+        %li.Nav__menu__list
+          = link_to logs_path, class: 'Nav__menu__list__item' do
+            ログアウト
+            = icon('fas', 'chevron-right')

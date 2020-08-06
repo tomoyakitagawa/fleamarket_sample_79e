@@ -2,4 +2,5 @@
   .Mypage-main__contents
     %form.Logout
       .Logout__container
-        %button.Logout__container__btn{"type": "submit"} ログアウト
+        -# %button.Logout__container__btn{"type": "submit"} ログアウト
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "Logout__container__btn"

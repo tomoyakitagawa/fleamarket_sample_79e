@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :cards, only: [:index, :new]
   resources :logs, only: :index
   resources :delivery_address, only: :index
+  resources :users, only: :show
   end
