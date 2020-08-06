@@ -3,6 +3,18 @@
     %section.Payment
       %h2.Payment__head 支払い情報
       .Payment__inner
-        = link_to new_card_path, class: 'Payment__inner__add-btn' do
-          = icon('far', 'credit-card')
-          クレジットカードを登録する
+        %section.creditcard_section
+          %h3 クレジットカード一覧
+          - if @card.present?
+            .container
+              .creditcard-info
+                = image_tag "cards/#{@card_image}",width:'34',height:'20', alt:'master-card'
+                %p.creditcard-info__number
+                  = "**** **** **** " + @card_info.last4 #クレジットカードの下４桁を表示
+                %p.creditcard-info__period 
+                = @exp_month + " / " + @exp_year
+                = button_to "削除する", cards_path(@card), method: :delete, class:"creditcard-info__delete"
+          - else
+            = link_to new_card_path, class: 'Payment__inner__add-btn' do
+              = icon('far', 'credit-card')
+              クレジットカードを登録する
