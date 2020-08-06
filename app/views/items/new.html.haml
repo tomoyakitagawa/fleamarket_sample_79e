@@ -21,7 +21,8 @@
                 = image_tag 'icon_camera.png', class: 'image-upload__register__box__image', size: "24x24"
                 %span.image-upload__register__box__span
                   クリックしてアップロード
-                %input.image-upload__register__box__input{type: "file"}
+                = f.fields_for :item_images do |i|
+                  = i.file_field :image, class: 'image-upload__register__box__input'
         
         .item-container
           .container-item
@@ -51,8 +52,7 @@
               必須
           .container-select
             %select.container-select__form
-              %option.container-select__form__option
-                選択してください
+            -# 後でcategoryを実装します。上記は仮置き
           .container-item
             %label.label
               ブランド
@@ -136,7 +136,7 @@
         %li.under__box__list__message
           プライバシーポリシー
         %li.under__box__list__message
-          メルカリ利用規約
+          フリマ利用規約
         %li.under__box__list__message
           特定商取引に関する表示
     = link_to '#', class: 'under__logo' do
