@@ -4,7 +4,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.text :explanation, null: false
       t.references :category, foreign_key: true
-      # categoryにnull: falseを後で追加する
       t.string :brand
       t.integer :condition_id, null: false
       t.integer :postage_id, null: false
