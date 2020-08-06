@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
+  resources :items, only: [:index, :new, :create]
   resources :confirms, only: :index
   resources :details, only: :index
   resources :mypages, only: :index
@@ -17,6 +18,3 @@ Rails.application.routes.draw do
   resources :logs, only: :index
   resources :delivery_address, only: :index
   end
-
-
-
