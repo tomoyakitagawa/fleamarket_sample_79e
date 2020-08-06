@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_055313) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "delivery_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -59,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_055313) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "explanation", null: false
-    t.bigint "category_id", null: false
+    t.bigint "category_id"
     t.string "brand"
     t.integer "condition_id", null: false
     t.integer "postage_id", null: false
@@ -75,11 +76,6 @@ ActiveRecord::Schema.define(version: 2020_08_06_055313) do
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "family_name", null: false
-    t.string "first_name", null: false
-    t.string "family_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.date "birthdate", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
