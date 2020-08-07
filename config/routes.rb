@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-  resources :items, only: [:index, :new, :create] do
+  resources :items, only: [:index, :new, :create, :edit, :update, :destroy] do
     #Ajaxで動くアクションのルートを作成
     collection do
       get 'get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
