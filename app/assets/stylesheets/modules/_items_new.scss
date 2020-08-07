@@ -295,3 +295,32 @@
     width: 100%;
   }
 }
+
+// -----------------カテゴリ-----------------------
+
+.container-titlebox__detail {
+  color: rgb(136, 136, 136);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+  margin-bottom: 24px;
+}
+
+.detail-container__category__title {
+  margin-bottom: 16px;
+}
+
+.detail-container__category__choose {
+  margin-bottom: 16px;
+  &__form {
+    appearance: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #222;
+    height: 48px;
+    line-height: 1;
+    outline: none;
+    padding: 0 16px;
+    width: 100%;
+  }
+}

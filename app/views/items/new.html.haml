@@ -43,16 +43,17 @@
               0/1000
           
         .detail-container
-          %p.container-title
-            商品の詳細
-          .container-item
-            %label.label
-              カテゴリ
-            %span.redlabel
-              必須
-          .container-select
-            %select.container-select__form
-            -# 後でcategoryを実装します。上記は仮置き
+          .exhibitionPage__main__contents__detail__title
+            %p.container-titlebox__detail
+              商品の詳細
+          .detail-container__category
+            .detail-container__category__title
+              %label.label
+                カテゴリ
+              %span.redlabel
+                必須
+            .detail-container__category__choose
+              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, { prompt: '---' }, {class: 'detail-container__category__choose__form', id: 'parent_category' }
           .container-item
             %label.label
               ブランド
