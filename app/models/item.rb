@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  has_many :categories
   has_many :item_images
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :condition

@@ -2,7 +2,10 @@ class ItemsController < ApplicationController
 
   def index
   end
-
+  
+  def show
+    @item = Item.find(params[:id])
+  end
   def new
     @item = Item.new
     @item.item_images.new
@@ -21,5 +24,6 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :explanation, :brand, :condition_id, :postage_id, :prefecture_id, :prepare_id, :price, item_images_attributes: [:image])
+
   end
 end
