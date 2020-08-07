@@ -1,0 +1,151 @@
+.listingpage
+  .top
+    = link_to root_path, class: 'top__link' do
+      = image_tag 'logo.png', class: 'top__link__image'
+
+  .short
+    .middle
+      = form_with model: @item, local: true do |f|
+        .image-container
+          .container-item
+            %label.label
+              出品画像
+            %span.redlabel
+              必須
+          %p.image-container__message
+            最大5枚までアップロードできます
+          .image-upload
+            .image-upload__prev
+            .image-upload__register
+              #image-box
+                %label.image-upload__register__box
+                  = image_tag 'icon_camera.png', class: 'image-upload__register__box__image', size: "24x24"
+                  %span.image-upload__register__box__span
+                    クリックしてアップロード
+                  = f.fields_for :item_images do |image|
+                    .js-file_group{"data-index" => "#{image.index}"}
+                      = image.file_field :image, class: 'image-upload__register__box__input'
+                      %br
+                      %span.js-remove
+                        削除
+        
+        .item-container
+          .container-item
+            %label.label
+              商品名
+            %span.redlabel
+              必須
+          .item-name
+            = f.text_field :name, class: 'item-name__input', placeholder: '40文字以内'
+          .container-item
+            %label.label
+              商品の説明
+            %span.redlabel
+              必須
+          .item-explanation
+            = f.text_area :explanation, {cols: "30", class: "item-explanation__field", placeholder: "商品の説明（必須1,000文字以内）\n(色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "10"}
+            %p.item-explanation__limit
+              0/1000
+          
+        .detail-container
+          .exhibitionPage__main__contents__detail__title
+            %p.container-titlebox__detail
+              商品の詳細
+          .detail-container__category
+            .detail-container__category__title
+              %label.label
+                カテゴリ
+              %span.redlabel
+                必須
+            .detail-container__category__choose
+              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, { prompt: '---' }, {class: 'detail-container__category__choose__form', id: 'parent_category' }
+          .container-item
+            %label.label
+              ブランド
+            %span.graylabel
+              任意
+          .brand-form
+            = f.text_field :brand, class: 'brand-form__box', placeholder: '例）シャネル'
+          .container-item
+            %label.label
+              商品の状態
+            %span.redlabel
+              必須
+          .container-select
+            = f.collection_select :condition_id, Condition.all, :id, :name, prompt: '選択してください', class: 'container-select__form'
+
+        .send-container
+          %p.container-title
+            配送について
+          .container-item
+            %label.label
+              配送の負担
+            %span.redlabel
+              必須
+          .container-select
+            = f.collection_select :postage_id, Postage.all, :id, :name, prompt: '選択してください', class: 'container-select__form'
+          .container-item
+            %label.label
+              配送の地域
+            %span.redlabel
+              必須
+          .container-select
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: '選択してください', class: 'container-select__form'
+          .container-item
+            %label.label
+              発送までの日数
+            %span.redlabel
+              必須
+          .container-select
+            = f.collection_select :prepare_id, Prepare.all, :id, :name, prompt: '選択してください', class: 'container-select__form'
+        
+        .price-container
+          %p.container-title
+            価格（¥300〜9,999,999）
+          .selling-form
+            .selling-form__price
+              .selling-form__price__label
+                %label.label
+                  販売価格
+                %span.redlabel
+                  必須
+              .selling-form__price__input
+                %p.selling-form__price__input__yen
+                  ¥
+                .selling-form__price__input__field
+                  = f.number_field :price, class: 'selling-form__price__input__field__box', placeholder: '0'
+            .selling-form__fee
+              %p.selling-form__fee__message
+                販売手数料（10%）
+              %p.selling-form__fee__price
+                ー
+            .selling-form__profit
+              %p.selling-form__profit__message
+                販売利益
+              %p.selling-form__profit__price
+                ー
+            
+        .submit-container 
+          .submit-container__btn
+            = f.submit '出品する', class: 'submit-container__btn__submit'
+          .submit-container__back
+            = link_to '#', class: 'submit-container__back__btn' do
+              もどる
+            
+        .notes-container
+          %p.notes-container__message
+            禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+  .under
+    .under__box
+      %ul.under__box__list
+        %li.under__box__list__message
+          プライバシーポリシー
+        %li.under__box__list__message
+          フリマ利用規約
+        %li.under__box__list__message
+          特定商取引に関する表示
+    = link_to '#', class: 'under__logo' do
+      = image_tag 'logo.png', class: 'under__logo__image', size: "140x55"
+    %p.under__name ©️FURIMA
+
