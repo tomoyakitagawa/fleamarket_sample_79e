@@ -4,12 +4,12 @@ $(document).on('turbolinks:load', ()=> {
     const html = `<div data-index="${index}" class="js-file_group">
                     <input class="image-upload__register__box__input" type="file"
                     name="item[item_images_attributes][${index}][image]"
-                    id="item_item_images_attributes_${index}_image"><br>
-                    <div class="js-remove">削除</div>
+                    id="item_item_images_attributes_${index}_image">
                   </div>`;
     return html;
   }
 
+  // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
     const html = `<div class="preview">
                     <img data-index="${index}" src="${url}" width="100px" height="100px" class="preview-image">
@@ -39,7 +39,7 @@ $(document).on('turbolinks:load', ()=> {
       //新規画像追加の処理
       $('#previews').append(buildImg(targetIndex, blobUrl));
       // fileIndexの先頭の数字を使ってinputを作る
-      $('#image-box').append(buildFileField(fileIndex[0]));
+      $('.image-upload__register__box').prepend(buildFileField(fileIndex[0]));
       //shiftメソッドで配列fileIndexの先頭の要素を取り除く
       fileIndex.shift();
       // pushメソッドで配列fileIndexに対して、末尾の数に1足した数を追加する
