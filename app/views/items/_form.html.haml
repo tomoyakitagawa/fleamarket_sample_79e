@@ -15,13 +15,11 @@
           %p.image-container__message
             最大5枚までアップロードできます
           .image-upload
-            .image-upload__prev
             .image-upload__register
               #image-box
+                #previews
                 %label.image-upload__register__box
                   = image_tag 'icon_camera.png', class: 'image-upload__register__box__image', size: "24x24"
-                  %span.image-upload__register__box__span
-                    クリックしてアップロード
                   = f.fields_for :item_images do |image|
                     .js-file_group{"data-index" => "#{image.index}"}
                       = image.file_field :image, class: 'image-upload__register__box__input'
@@ -32,9 +30,11 @@
                       = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
                   - if @item.persisted?
                     .js-file_group{"data-index" => "#{@item.item_images.count}"}
-                      = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][item]", class: 'js-file'
+                      = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][item]", class: 'image-upload__register__box__input'
                       .js-remove
                         削除
+                  %span.image-upload__register__box__span
+                    クリックしてアップロード
         
         .item-container
           .container-item
