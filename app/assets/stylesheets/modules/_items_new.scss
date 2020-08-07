@@ -321,3 +321,9 @@
   color: black;
   font-size: 12px;
 }
+
+#previews {
+  display: flex;
+  width: 100%;
+  overflow-x:scroll;
+}
