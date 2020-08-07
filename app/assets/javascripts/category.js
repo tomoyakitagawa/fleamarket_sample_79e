@@ -39,7 +39,7 @@ $(document).on('turbolinks:load', function(){
       ('parent_category').value; //選択された親カテゴリーの名前を取得
       if (parent_category_id != "---"){ //親カテゴリーが初期値でないことを確認
         $.ajax({
-          url: '/items/get_category_children',
+          url: '/items/category/get_category_children',
           type: 'GET',
           data: { parent_id: parent_category_id },
           dataType: 'json'
@@ -68,7 +68,7 @@ $(document).on('turbolinks:load', function(){
       var child_category_id = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
       if (child_category_id != "---"){ //子カテゴリーが初期値でないことを確認
         $.ajax({
-          url: '/items/get_category_grandchildren',
+          url: '/items/category/get_category_grandchildren',
           type: 'GET',
           data: { child_id: child_category_id },
           dataType: 'json'
