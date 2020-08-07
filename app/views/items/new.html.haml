@@ -17,12 +17,17 @@
           .image-upload
             .image-upload__prev
             .image-upload__register
-              %label.image-upload__register__box
-                = image_tag 'icon_camera.png', class: 'image-upload__register__box__image', size: "24x24"
-                %span.image-upload__register__box__span
-                  クリックしてアップロード
-                = f.fields_for :item_images do |i|
-                  = i.file_field :image, class: 'image-upload__register__box__input'
+              #image-box
+                %label.image-upload__register__box
+                  = image_tag 'icon_camera.png', class: 'image-upload__register__box__image', size: "24x24"
+                  %span.image-upload__register__box__span
+                    クリックしてアップロード
+                  = f.fields_for :item_images do |image|
+                    .js-file_group{"data-index" => "#{image.index}"}
+                      = image.file_field :image, class: 'image-upload__register__box__input'
+                      %br
+                      %span.js-remove
+                        削除
         
         .item-container
           .container-item
