@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
 
   def index
   end
@@ -52,9 +51,5 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :explanation, :brand, :category_id, :condition_id, :postage_id, :prefecture_id, :prepare_id, :price, item_images_attributes: [:image, :_destroy, :id])
-  end
-
-  def set_item
-    @item = Item.find(params[:id])
   end
 end
