@@ -66,13 +66,6 @@
             resize: vertical;
             vertical-align: middle;
           }
-          &__limit {
-            margin-top: 16px;
-            color: #888;
-            font-size: 12px;
-            line-height: 1.4em;
-            text-align: right;
-          }
         }
       }
 
@@ -128,24 +121,6 @@
                 }
               }
             }
-          }
-          &__fee {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 46px;
-            padding: 12px 0px;
-            margin-bottom: 10px;
-            font-size: 14px;
-          }
-          &__profit {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 46px;
-            padding: 12px 0px;
-            margin-bottom: 10px;
-            font-size: 14px;
           }
         }
       }
