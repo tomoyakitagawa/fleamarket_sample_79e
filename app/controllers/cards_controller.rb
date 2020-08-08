@@ -1,14 +1,14 @@
 class CardsController < ApplicationController
   require "payjp"
-  # before_action :set_card
+  before_action :set_card, only: [:new, :delete, :show]
 
   def index
-    @card = Card.where(user_id: current_user.id).first
+    @card = Card.find_by(user_id: current_user.id)
   end
 
   def new
-    card = Card.where(user_id: current_user.id)
-    redirect_to card_path(card) if card.exists?
+    # card = Card.where(user_id: current_user.id)
+    redirect_to card_path(@card) if @card.present?
   end
 
   def pay #payjpとCardのデータベース作成を実施します。
@@ -32,30 +32,32 @@ class CardsController < ApplicationController
   end
 
   def delete #PayjpとCardデータベースを削除します
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
+    # card = Card.where(user_id: current_user.id).first
+    if @card.blank?
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
-      card.delete
+      @card.delete
     end
       redirect_to cards_path
   end
 
   def show #Cardのデータpayjpに送り情報を取り出します
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
+    # card = Card.where(user_id: current_user.id).first
+    if @card.blank?
       redirect_to new_card_url 
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.payjp_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      # customer = Payjp::Customer.retrieve("cus_2d9a92504a0560103b7d9015be1a")
+      @default_card_information = customer.cards.retrieve(@card.payjp_id)
+      # @default_card_information = customer.cards.retrieve("car_0fffe95b34ec4c4cb204342647d1")
     end
   end
 
-  # private
-  # def set_card
-  #   @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-  # end
+  private
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
 end
