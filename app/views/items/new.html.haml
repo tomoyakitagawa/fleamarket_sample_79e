@@ -54,7 +54,7 @@
               %span.redlabel
                 必須
             .detail-container__category__choose
-              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, { prompt: '---' }, {class: 'detail-container__category__choose__form', id: 'parent_category' }
+              = f.collection_select :category_id, @category_parent_array, :id, :name, { prompt: '---' }, {class: 'detail-container__category__choose__form', id: 'parent_category' }
           .container-item
             %label.label
               ブランド
