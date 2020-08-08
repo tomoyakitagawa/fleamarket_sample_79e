@@ -341,7 +341,7 @@
     }
   }
 
-  //投稿クリックエリアのCSS
+  //---------------投稿クリックエリアのCSS----------------
   .label-content{
     margin-bottom: 10px;
     width: 620px;
@@ -372,5 +372,12 @@
   }
 
   //file_fieldのcss
-  
+  .hidden-content {
+    .hidden-field {
+      display: none;
+    }
+    .hidden-checkbox {
+      display: none;
+    }
+  }
 }
