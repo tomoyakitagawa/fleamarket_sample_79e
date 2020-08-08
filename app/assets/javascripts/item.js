@@ -2,7 +2,7 @@ $(function(){
   //================================================================
   //共通の定数を定義
   //==================================================================
-  // label-contentの直前に配置されている要素(今回はprev-content)を取得する
+  // label-contentの直前に配置されている要素(今回はdiv class="prev-content")を取得する
   
   const prevContent = $('.label-content').prev();
 
@@ -40,6 +40,15 @@ $(function(){
       $('.label-box').attr({for: `item_item_images_attributes_${count}_image`});
     }
   }
+  //画像を削除してから再投稿した時はこっち
+  function setLabelAAA(id) {
+    //プレビューは4個以下のはずなのでラベルは表示
+    //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定(prev-contentのwidthを取って、大枠(width:620px)から引き算する)
+    labelWidth = (620 - parseInt($(prevContent).css('width')));  //parseIntは文字列を整数に変換するjavascriptの関数
+    $('.label-content').css('width', labelWidth);
+    //id・forの値を変更
+    $('.label-box').attr({for: `item_item_images_attributes_${id}_image`});
+  }
 
   //====================================================
   //編集ページ(items/:i/edit)へリンクした際のアクション
@@ -56,7 +65,7 @@ $(function(){
   //=======================================================
   //hidden-fieldsの値が変更したとき発火
   $(document).on('change', '.hidden-field', function() {
-    console.log("発火している");
+    console.log("hidden-fieldの変更イベントが発火している");
     //発火したhidden-fieldのidの数値のみ取得
     var id = $(this).attr('id').replace(/[^0-4]/g, '');
     //選択したfileのオブジェクトを取得
@@ -91,12 +100,11 @@ $(function(){
     }
     //画像を消去
     $(this).parent().parent().parent().remove();
-    //フォームの中身を削除
-    $(`#item_item_images_attributes_${id}_image`).val("");
+    //フォームの中身を削除(.hidden-fieldの該当箇所が、ファイル名から選択されていませんに変化)
+     $(`#item_item_images_attributes_${id}_image`).val("");
     //プレビューの数を取得
-    var count = $('.preview-box').length;
-    console.log(count);
-    //countに応じてラベルのwidth・id・forの値を変更
-    setLabel(count);
-  });
+    //var count = $('.preview-box').length;
+    //idに応じてラベルのwidth・id・forの値を変更
+    setLabelAAA(id);
+    });
 });
