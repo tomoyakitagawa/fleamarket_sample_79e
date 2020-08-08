@@ -31,13 +31,13 @@
                   カテゴリー
                 %td
                   = link_to "#", class: "table__link" do
-                    ベビーキッズ
+                    = @item.category.parent.parent.name
                   %br
                   = link_to "#", class: "table__link" do
-                    おもちゃ
+                    = @item.category.parent.name
                   %br
                   = link_to "#", class: "table__link" do
-                    知育玩具
+                    = @item.category.name
                   %br
               %tr
                 %th
