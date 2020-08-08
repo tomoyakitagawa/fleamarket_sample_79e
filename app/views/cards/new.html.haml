@@ -4,11 +4,11 @@
       %h2.Register__head クレジットカード情報入力
       .Register__form
         .Register__form__content
-          = form_with url:"cards_path", method: :post, html: { name: "inputForm" } do |f|
+          = form_with url: pay_cards_path, method: :post, id: 'charge-form', name: "inputForm"  do |f|
             .Register__form__content__group
               %label.Register__form__content__group__label カード番号
               %span.Register__form__content__group__necessary 必須
-              = f.text_field :card_number, name: "card_number", id:"card_number", type: "text", placeholder: '半角数字のみ', class: 'Register__form__content__group__input', maxlength: "16"
+              = f.text_field :number, name: "card_number", id:"card_number", type: "text", placeholder: '半角数字のみ', class: 'Register__form__content__group__input', maxlength: "16"
             .Register__form__content__group
               %label.Register__form__content__group__label 有効期限
               %span.Register__form__content__group__necessary 必須
@@ -21,8 +21,9 @@
                 = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030]], {}, class: 'Register__form__content__group__half__select', name: "exp_year", id:"exp_year"
                 = icon('fas', 'angle-down')
                 %span 年
+            #card_token
             .Register__form__content__group
               %label.Register__form__content__group__label セキュリティコード
               %span.Register__form__content__group__necessary 必須
               = f.text_field :cvc, name: "cvc", id:"cvc", class:"cvc", type: "text", placeholder: 'カード背面4桁もしくは3桁の番号', class: 'Register__form__content__group__input', maxlength: "4"
-            = f.submit "追加する", class: "Register__form__content__btn"
+              = f.submit "追加する", class: "Register__form__content__btn",  id: "token_submit"
