@@ -1,64 +1,101 @@
-$(document).on('turbolinks:load', ()=> {
-  // 画像用のinputを生成する関数
-  const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="js-file_group">
-                    <input class="image-upload__register__box__input" type="file"
-                    name="item[item_images_attributes][${index}][image]"
-                    id="item_item_images_attributes_${index}_image">
-                  </div>`;
+$(function(){
+  //================================================================
+  //共通の定数を定義
+  //==================================================================
+  // label-contentの直前に配置されている要素(今回はprev-content)を取得する
+  
+  const prevContent = $('.label-content').prev();
+
+  //============================================================
+  //プレビューのhtmlを定義
+  //============================================================
+  function buildHTML(id,image) {
+    var html = `<div class="preview-box">
+                  <div class="upper-box">
+                    <img src=${image} alt="preview">
+                  </div>
+                  <div class="lower-box">
+                    <div class="delete-box">
+                      <div class="delete-btn" data-delete-id= ${id}>削除</div>
+                    </div>
+                  </div>
+                </div>`
     return html;
   }
 
-  // プレビュー用のimgタグを生成する関数
-  const buildImg = (index, url)=> {
-    const html = `<div class="preview">
-                    <img data-index="${index}" src="${url}" width="100px" height="100px" class="preview-image">
-                  </div>`;
-    return html;
-  }
-
-  // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  // 既に使われているindexを除外
-  lastIndex = $('.js-file_group:last').data('index');
-  fileIndex.splice(0, lastIndex);
-
-  $('.hidden-destroy').hide();
-
-  $('#image-box').on('change', '.image-upload__register__box__input', function(e) {
-    // thisはイベントの発生源となった要素を取得できる
-    const targetIndex = $(this).parent().data('index');
-    // ファイルのブラウザ上でのURLを取得する
-    const file = e.target.files[0];
-    const blobUrl = window.URL.createObjectURL(file);
-    // もし、該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
-    // わかりやすく言うと、<img data-index="${targetIndex}">でindex番号がO番目があれば変数imgに入れる
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      img.setAttribute('src', blobUrl);
+  //==================================================
+  //ラベルのwidth・id・forの値を変更
+  //==================================================
+  function setLabel(count) {
+    //プレビューが5個あったらラベルを隠す
+    if (count == 5) { 
+      $('.label-content').hide();
     } else {
-      //新規画像追加の処理
-      $('#previews').append(buildImg(targetIndex, blobUrl));
-      // fileIndexの先頭の数字を使ってinputを作る
-      $('.image-upload__register__box').prepend(buildFileField(fileIndex[0]));
-      //shiftメソッドで配列fileIndexの先頭の要素を取り除く
-      fileIndex.shift();
-      // pushメソッドで配列fileIndexに対して、末尾の数に1足した数を追加する
-      fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+      //プレビューが4個以下の場合はラベルを表示
+      $('.label-content').show();
+      //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定(prevcontentのwidthを取って、大枠(width:620px)から引き算する)
+      labelWidth = (620 - parseInt($(prevContent).css('width')));  //parseIntは文字列を整数に変換するjavascriptの関数
+      $('.label-content').css('width', labelWidth);
+      //id・forの値を変更
+      $('.label-box').attr({for: `item_images_attributes_${count}_image`});
+    }
+  }
+
+  //====================================================
+  //編集ページ(items/:i/edit)へリンクした際のアクション
+  //====================================================
+  if (window.location.href.match(/\/items\/\d+\/edit/)){
+    //プレビューの数を取得
+    var count = $('.preview-box').length;
+    //countに応じてラベルのwidth・id・forの値を変更
+    setLabel(count) 
+  }
+
+  //=======================================================
+  //プレビューの追加
+  //=======================================================
+  //hidden-fieldsの値が変更したとき発火
+  $(document).on('change', '.hidden-field', function() {
+    //発火したhidden-fieldのidの数値のみ取得
+    var id = $(this).attr('id').replace(/[^0-4]/g, '');
+    //選択したfileのオブジェクトを取得
+    var file = this.files[0];
+    // PC内にあるファイルをアプリケーションに非同期で読み込む
+    var reader = new FileReader();
+    //readAsDataURLで指定したFileオブジェクトを読み込む
+    reader.readAsDataURL(file);
+    //読み込み時に発火するイベント
+    reader.onload = function() {
+      // 直前に実行されたイベント（imageファイルの読み込み）を変数imageに代入
+      var image = this.result;
+      //htmlを作成
+      var html = buildHTML(id,image);
+      //ラベルの直前のプレビュー群にプレビューを追加
+      $(prevContent).append(html);
+      //プレビューの数を取得
+      var count = $('.preview-box').length;
+      //countに応じてラベルのwidth・id・forの値を変更
+      setLabel(count);
     }
   });
 
-  $('#image-box').on('click', '.js-remove', function() {
-    const targetIndex = $(this).parent().data('index')
-    // 該当indexを振られているチェックボックスを取得する
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    // もしチェックボックスが存在すれば、つまりtrueなら、チェックを入れる
-    // hiddenCheckから、propメソッドを使用して()の中に合致するプロパティを取得する
-    if (hiddenCheck) hiddenCheck.prop('checked', true);
-    
-    $(this).parent().remove();
-    $(`img[data-index="${targetIndex}"]`).remove();
-
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.image-upload__register__box__input').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+  //=====================================================================
+  // 画像の削除
+  //=====================================================================
+  $(document).on('click', '.delete-btn', function() {
+    var id = $(this).attr('data-delete-id')
+    //削除用チェックボックスにチェックを入れる
+    if ($(`#item_images_attributes_${id}__destroy`).length) {
+      $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
+    }
+    //画像を消去
+    $(this).parent().parent().parent().remove();
+    //フォームの中身を削除
+    $(`#item_images_attributes_${id}_image`).val("");
+    //プレビューの数を取得
+    var count = $('.preview-box').length;
+    console.log(count);
+    //countに応じてラベルのwidth・id・forの値を変更
+    setLabel(count);
   });
 });
