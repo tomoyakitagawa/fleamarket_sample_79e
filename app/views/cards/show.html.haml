@@ -1,0 +1,11 @@
+.Mypage-main
+  .Mypage-main__contents.card-form
+    %h2.Payment__head 登録クレジットカード情報
+    %br
+    = "**** **** **** " + @default_card_information.last4
+    %br
+    - exp_month = @default_card_information.exp_month.to_s
+    - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+    = exp_month + " / " + exp_year
+    = form_with url: delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm" do |f|
+      = f.submit "削除する", class: 'card-delete-btn'

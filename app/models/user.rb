@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :family_name_kana, :first_name_kana, presence: true, format: { with: VALID_KANA_NAME_REGEX, message: "は全角カナで入力してください" }
 
   has_one :delivery_address
+  has_one :card
 
   has_many :seller_items, class_name: 'Item', foreign_key: 'seller_id'
   has_many :buyer_items, class_name: 'Item', foreign_key: 'buyer_id'
