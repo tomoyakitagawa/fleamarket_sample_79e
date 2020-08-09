@@ -10,12 +10,11 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-  resources :items, only: [:index, :new, :create]
-  resources :confirms, only: :index
-  resources :details, only: :index
-  resources :mypages, only: :index
-  resources :cards, only: [:index, :new]
-  resources :logs, only: :index
-  resources :delivery_address, only: :index
-  resources :users, only: :show
+    resources :items, only: [:index, :new, :create, :show]
+    resources :confirms, only: :index
+    resources :mypages, only: :index
+    resources :cards, only: [:index, :new]
+    resources :logs, only: :index
+    resources :delivery_address, only: :index
+    resources :users, only: :show
   end
