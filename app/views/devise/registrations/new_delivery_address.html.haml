@@ -9,7 +9,7 @@
       %h2.delivery_address-head
         商品送付先入力
       = form_with model: @address, url: addresses_path,method: :post, class:"delivery_address-form", local: true do |f|
-        = render "delivery_error_messages", resource: resource
+
         .delivery_address-content
           .delivery_address-label
             = f.label "お名前(全角)", class: "addlress-form-label"
