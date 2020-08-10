@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      delivery_address: 届け先住所
     attributes:
       user:
         nickname: ニックネーム
@@ -13,6 +14,15 @@ ja:
         first_name: 名
         family_name_kana: 性カナ
         first_name_kana: 名カナ
+      delivery_address:
+        delivery_family_name: 性
+        delivery_first_name: 名
+        delivery_family_name_kana: 性カナ
+        delivery_first_name_kana: 名カナ
+        post_code: 郵便番号
+        phone_number: 電話番号
+        city: 市区町村
+        home_number: 番地
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
