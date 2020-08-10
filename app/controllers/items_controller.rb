@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :move_to_index_destroy, only: [:destroy]
 
   def index
   end
@@ -38,6 +39,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    if item.destroy
+      redirect_to root_path, notice: '削除しました'
+    else
+      render :edit
+    end
+  end
+
   # 以下全て、formatはjsonのみ
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
@@ -55,5 +65,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :explanation, :brand, :category_id, :condition_id, :postage_id, :prefecture_id, :prepare_id, :price, item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
+  end
+
+  def move_to_index_destroy
+    @item = Item.find(params[:id])
+    redirect_to root_path unless current_user.id == @item.seller_id
   end
 end
