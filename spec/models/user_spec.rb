@@ -60,12 +60,6 @@ describe User do
       user.valid?
       expect(user.errors[:password]).to include("は7文字以上で入力してください")
     end
-
-    # it "性が半角だと登録できない" do
-    #   user = build(:user, family_name: "ﾐｮｳｼﾞ")
-    #   user.valid?
-    #   expect(user.errors[:family_name]).to include("を入力してください")
-    # end
   end
 
   describe '#名前を半角で入力' do
