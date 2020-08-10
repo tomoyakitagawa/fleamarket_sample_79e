@@ -11,12 +11,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background-color: #f8f8f8;
     &__link {
       &__image {
         width: 185px;
         height: 49px;
       }
+    }
+    &__edit {
+        font-size: 24px;
+        font-weight: bold;
+        background-color: #fff;
+        width: 700px;
+        text-align: center;
+        margin-top: 15px;
     }
   }
       
