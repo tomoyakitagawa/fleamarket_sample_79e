@@ -11,58 +11,81 @@
 
       %section.buy_item
         .buy_item__box
-          = image_tag("buy_item.png", class: "buy_item__box__image")
+          = image_tag @item.item_images[0].image.url, class: "buy_item__box__image"
           .buy_item__box__group
             .buy_item__box__group__name
-              商品名 令和最新バージョン超スーパーハイパーデニム
+              = @item.name
             .buy_item__box__group__price
               .buy_item__box__group__price__shipping_fee_including_tax
                 送料込み (税込)
               .buy_item__box__group__price__amount
-                ￥32,000
+                ￥
+                -# 3桁でカンマ区切り
+                = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
 
       %section.pay_amount
         .pay_amount__group
           .pay_amount__group__titel
             支払い金額
           .pay_amount__group__payment
-            ￥32,000
-        .pay_amount__point
-          .pay_amount__point__list
-            = icon("fas", "stop", class: "pay_amount__point__list__icon")
-            = image_tag("point-logo.png", class: "pay_amount__point__list__logo")
-            .pay_amount__point__list__name
-              ポイント
-          .pay_amount__point__ownership_point
-            所持ポイント : P0
+            ￥
+            -# 3桁でカンマ区切り
+            = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+        -#実装完了後コメントアウト解除 
+        -# .pay_amount__point
+        -#   .pay_amount__point__list
+        -#     = icon("fas", "stop", class: "pay_amount__point__list__icon")
+        -#     = image_tag("point-logo.png", class: "pay_amount__point__list__logo")
+        -#     .pay_amount__point__list__name
+        -#       ポイント
+        -#   .pay_amount__point__ownership_point
+        -#     所持ポイント : P0
 
       %section.select
         .select__group
           .select__group__title
             %h3.select__group__title__char
               支払い方法
-        = link_to "", class: "select__registration" do
+            %h2 登録クレジットカード情報
+            %br
+            = "**** **** **** " + @default_card_information.last4
+            %br
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
+        = link_to cards_path, class: "select__registration" do
           = icon("fas", "plus-circle", class: "select__registration__icon")
           %span.select__registration__title
-            登録してください
+            変更
+
       %section.select
         .select__group
           .select__group__title
             %h3.select__group__title__char
               配送先
-        = link_to "", class: "select__registration" do
-          = icon("fas", "plus-circle", class: "select__registration__icon")
-          %span.select__registration__title
-            登録してください
+            〒
+            = @address.post_code.to_s.insert(3, "-")
+            %br
+            = @address.prefecture.name
+            = @address.city
+            = @address.home_number
+            %br
+            = @address.building_name
+            %br
+            TEL：
+            = @address.phone_number
+        -# 実装完了後コメントアウト解除
+        -# = link_to "", class: "select__registration" do
+        -#   = icon("fas", "plus-circle", class: "select__registration__icon")
+          -# %span.select__registration__title
+            -# 変更
 
       %section.purchase
         .purchase__group
           %P.purchase__group__description
-            郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください
-          %p.purchase__group__attention
-            配送先と支払い方法の入力を完了してください。
-          %button.purchase__group__style_button{"data-test" => "transaction-buy-purchase", :disabled => "", :tabindex => "-1", :type => "button"} 購入する
-
+            出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください
+          = form_with action: :pay, method: :post do |f|
+            = f.submit "購入する", class: "purchase__group__style_button"
   .confirms-footer
     .terms
       %ul.terms__list

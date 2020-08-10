@@ -1,9 +1,9 @@
 class CardsController < ApplicationController
   require "payjp"
-  before_action :set_card, only: [:new, :delete, :show]
+  before_action :set_card, only: [:index, :new, :delete, :show]
 
   def index
-    @card = Card.find_by(user_id: current_user.id)
+    # @card = Card.find_by(user_id: current_user.id)
   end
 
   def new
