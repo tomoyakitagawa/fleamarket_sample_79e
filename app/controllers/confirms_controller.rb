@@ -20,6 +20,7 @@ class ConfirmsController < ApplicationController
   end
 
   def pay
+    @item = Item.find(params[:id])
     @card = Card.find_by(user_id: current_user.id)
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
@@ -27,6 +28,8 @@ class ConfirmsController < ApplicationController
       customer: card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
+    @item_buyer = Item.find_by(params[:id])
+    @item_buyer.update(buyer_id: current_user.id)
     redirect_to done_confirms_path
   end
 

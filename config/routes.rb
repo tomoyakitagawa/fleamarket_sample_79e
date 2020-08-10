@@ -18,10 +18,12 @@ Rails.application.routes.draw do
     end
   end
   
+  get 'confirms', to: 'confirms#index'
+  post 'confirms', to: 'confirms#pay'
   resources :confirms, only: :index do
     collection do
       get 'done', to: 'confirms#done'
-      post 'pay', to: 'confirms#pay'
+      post 'confirms', to: 'confirms#pay'
     end
   end
   resources :details, only: :index
