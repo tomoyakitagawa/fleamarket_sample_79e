@@ -202,3 +202,37 @@ select {
 .company-inc {
   font-size: 12px;
 }
+
+// 登録完了画面
+.Create-user-main {
+  @include base;
+  &__contents {
+    @include width-size;
+    background-color: #fff;
+    &__field {
+      &__head {
+        font-size: 24px;
+        text-align: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #dedede;
+      }
+      &__list {
+        text-align: center;
+        &__btn {
+          text-decoration: none;
+          width: 50%;
+          display: inline-block;
+          background-color: #3CCACE;
+          border: 1px solid #3CCACE;
+          border-radius: 4px;
+          color: #fff;
+          line-height: 48px;
+          font-size: 14px;
+          text-align: center;
+          cursor: pointer;
+          margin: 15px 0;
+        }
+      }
+    }
+  }
+}
