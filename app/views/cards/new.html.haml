@@ -4,6 +4,13 @@
       %h2.Register__head クレジットカード情報入力
       .Register__form
         .Register__form__content
+          %p.Register__form__content__card
+            ※登録可能カード
+            %br
+            Visa , Mastercard , American Express
+            %br
+            JCB、Diners Club、Discover
+            %br
           = form_with url: pay_cards_path, method: :post, id: 'charge-form', name: "inputForm"  do |f|
             .Register__form__content__group
               %label.Register__form__content__group__label カード番号
