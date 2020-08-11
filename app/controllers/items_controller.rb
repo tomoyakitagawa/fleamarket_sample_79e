@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
 
   def index
+    @images = ItemImage.all
+    @items = Item.all
+    
   end
 
   def get_category_children
