@@ -29,14 +29,13 @@
               %tr
                 %th
                   カテゴリー
-                %td
-                  %ul.category_body
-                    %li
-                      = link_to "#{@category_parent.name}","#"
-                    %li
-                      = link_to "#{@category_child.name}","#"
-                    %li
-                      = link_to "#{@category_grandchild.name}","#"
+                %ul.category_body
+                  %li
+                    = link_to "#{@category_parent.name}","#"
+                  %li
+                    = link_to "#{@category_child.name}","#"
+                  %li
+                    = link_to "#{@category_grandchild.name}","#"
               %tr
                 %th
                   ブランド
