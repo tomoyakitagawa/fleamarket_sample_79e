@@ -29,13 +29,11 @@
 ### Association
 - belongs_to :user
 
-## credit_cardsテーブル
+## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|credit_number|integer|null: false, unique: true|
-|expiration_year|integer|null: false|
-|expiration_month|integer|null: false|
-|security_code|integer|null: false|
+|payjp_id|string|null: false, unique: true|
+|customer_id|string|null: false|
 |user|references|null: false, foreign_key: true|
 
 ### Association
