@@ -70,5 +70,6 @@ class ItemsController < ApplicationController
   def move_to_index_destroy
     @item = Item.find(params[:id])
     redirect_to root_path unless current_user.id == @item.seller_id
+    # redirect_to edit_item_pathに置き換えても大丈夫かも
   end
 end
