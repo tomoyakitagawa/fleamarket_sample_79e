@@ -44,6 +44,9 @@
         &__content {
           width: 340px;
           margin: 0 auto;
+          &__card {
+            margin-bottom: 10px;
+          }
           &__group {
             margin-bottom: 10px;
             &__label {
@@ -125,6 +128,7 @@
   font-size: 14px;
   text-align: center;
   cursor: pointer;
+  margin: 32px 0;
 }
 
 .card-form {

@@ -245,3 +245,25 @@
 .company-inc {
   font-size: 12px;
 }
+
+// done.html.haml
+.pay_btn {
+  padding: 0 16px 32px 16px;
+  max-width: 375px;
+  margin: 0px auto;
+  display: block;
+  text-align: center;
+  &__path {
+    background: #3CCACE;
+    border: 1px solid #3CCACE;
+    line-height: 48px;
+    font-size: 16px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    &__decoration {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}

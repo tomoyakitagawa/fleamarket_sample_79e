@@ -1,11 +1,12 @@
 class ConfirmsController < ApplicationController
   require 'payjp'
+  before_action :set_card, :set_item
 
   def index
     @user = current_user
     @address = DeliveryAddress.find_by(user_id: current_user.id)
-    @item = Item.find_by(params[:id])
-    @card = Card.find_by(user_id: current_user.id)
+    # @item = Item.find_by(params[:id])
+    # @card = Card.find_by(user_id: current_user.id)
 
     if @card.blank?
       #登録された情報がない場合にカード登録画面に移動
@@ -20,12 +21,12 @@ class ConfirmsController < ApplicationController
   end
 
   def pay
-    @item = Item.find(params[:id])
-    @card = Card.find_by(user_id: current_user.id)
+  #   @item = Item.find_by(params[:id])
+    # @card = Card.find_by(user_id: current_user.id)
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
       amount: @item.price,
-      customer: card.customer_id, #顧客ID
+      customer: @card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
     @item_buyer = Item.find_by(params[:id])
@@ -34,6 +35,17 @@ class ConfirmsController < ApplicationController
   end
 
   def done
+    # @item = Item.find_by(params[:id])
   end
   
+  private
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find_by(params[:id])
+  end
+
 end

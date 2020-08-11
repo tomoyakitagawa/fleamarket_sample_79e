@@ -1,1 +1,37 @@
-%h2 購入が完了しました！
+.confirms-page
+  .confirms-header
+    = link_to root_path do
+      = image_tag("logo.png", width: "200px")
+    
+  .confirms-main
+    .confirms-contents
+      %section.purchase_detail
+        %h2.purchase_detail__title
+          購入が完了しました
+
+      %section.buy_item
+        .buy_item__box
+          = image_tag @item.item_images[0].image.url, class: "buy_item__box__image"
+          .buy_item__box__group
+            .buy_item__box__group__name
+              = @item.name
+            .buy_item__box__group__price
+              .buy_item__box__group__price__shipping_fee_including_tax
+                送料込み (税込)
+              .buy_item__box__group__price__amount
+                ￥
+                -# 3桁でカンマ区切り
+                = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+
+      %section.pay_amount
+        .pay_amount__group
+          .pay_amount__group__titel
+            支払い金額
+          .pay_amount__group__payment
+            ￥
+            -# 3桁でカンマ区切り
+            = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+
+      %section.pay_btn
+        .pay_btn__path
+          = link_to "トップページへ戻る", items_path, class: "pay_btn__path__decoration"
