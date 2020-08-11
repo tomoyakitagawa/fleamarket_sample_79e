@@ -74,6 +74,10 @@
             %br
             TEL：
             = @address.phone_number
+            %br
+            名前：
+            = @address.delivery_family_name
+            = @address.delivery_first_name
         -# 実装完了後コメントアウト解除
         -# = link_to "", class: "select__registration" do
         -#   = icon("fas", "plus-circle", class: "select__registration__icon")
