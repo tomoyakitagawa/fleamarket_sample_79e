@@ -12,14 +12,14 @@
             %span 0
           .Avatar__icon__number__sell
             %span 出品数
-            %span 0
+            = @item
 
   .Mypage-main__side
     %nav.Nav
       %h3.Nav__head マイページ
       %ul.Nav__menu
         %li.Nav__menu__list
-          = link_to '#', class: 'Nav__menu__list__item' do
+          = link_to new_item_path, class: 'Nav__menu__list__item' do
             出品する
             = icon('fas', 'chevron-right')
         %li.Nav__menu__list
