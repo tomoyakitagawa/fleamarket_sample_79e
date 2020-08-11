@@ -1,0 +1,345 @@
+// editの画面は商品登録画面をベースに編集
+// labelなどの新規登録と共通する部分は_item_new.scssに記述
+
+* {
+  box-sizing: border-box;
+}
+
+.edit-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .edit-top {
+    height: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    &__link {
+      &__image {
+        width: 185px;
+        height: 49px;
+      }
+    }
+    .edit-text {
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #fff;
+      width: 700px;
+      text-align: center;
+      margin-top: 15px;
+    }
+  }
+  .short {
+    background-color: #f8f8f8;
+    .middle {
+      margin: 0px auto;
+      padding-bottom: 40px;
+      max-width: 700px;
+      width: 100%;
+      background-color: #fff;
+      .image-container {
+        padding: 40px;
+        border-bottom: 1px solid #dedede;
+        &__message {
+          margin-bottom: 16px;
+          font-size: 14px;
+          line-height: 1.4em;
+        }
+      }
+
+      .item-container {
+        padding: 40px;
+        border-bottom: 1px solid #dedede;
+        .item-name {
+          margin-bottom: 16px;
+          &__input {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: inherit;
+            height: 48px;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+        }
+        .item-explanation {
+          &__field {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #222;
+            font-size: 16px;
+            outline: none;
+            padding: 13px 16px;
+            resize: vertical;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      .detail-container {
+        padding: 40px;
+        border-bottom: 1px solid #dedede;
+        .brand-form {
+          margin-bottom: 16px;
+          .brand-form__box {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: inherit;
+            height: 48px;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+          }
+        }
+      }
+
+      .send-container {
+        padding: 40px;
+        border-bottom: 1px solid #dedede;
+      }
+
+      .price-container {
+        padding: 40px;
+        .selling-form {
+          &__price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 46px;
+            padding: 12px 0px;
+            margin-bottom: 10px;
+            width: 100%;
+            &__input {
+              display: flex;
+              &__yen {
+                line-height: 46px;
+                margin-right: 10px;
+              }
+              &__field {
+                text-align: right;
+                &__box {
+                  text-align: right;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  height: 48px;
+                  outline: none;
+                  padding: 0 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .submit-container {
+        width: 360px;
+        margin: 0px auto;
+        &__btn {
+          margin-bottom: 20px;
+          &__submit {
+            display: block;
+            width: 100%;
+            height: 50px;
+            background-color: #3CCACE;
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+          }
+        }
+        &__back {
+          text-align: center;
+          margin-bottom: 20px;
+          &__btn {
+            text-decoration: none;
+            color: #3CCACE;
+          }
+        }
+      }
+
+      .notes-container {
+        padding: 0px 40px;
+        &__message {
+          font-size: 12px;
+          line-height: 1.4em;
+        }
+      }
+    }
+  }
+
+  .under {
+    text-align: center;
+    height: 220px;
+    width: 100%;
+    padding: 40px 0;
+    background-color: #f8f8f8;
+    &__box {
+      &__list {
+        list-style: none;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+        &__message {
+          margin-right: 10px;
+        }
+      }
+    }
+    &__logo{
+      text-decoration: none;
+    }
+    &__name {
+      font-size: 12px;
+    }
+  }
+}
+.container-item {
+  margin-bottom: 16px;
+}
+
+.label{
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+
+.redlabel {
+  margin-left: 8px;
+  font-size: 12px;
+  padding: 3px 4px;
+  font-weight: 600;
+  background-color: red;
+  color: #fff;
+}
+
+.graylabel {
+  margin-left: 8px;
+  font-size: 12px;
+  padding: 3px 4px; 
+  font-weight: 600;
+  background-color: #bfbfbf;
+  color: #fff;
+}
+
+.container-title {
+  color: rgb(136, 136, 136);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+  margin-bottom: 24px;
+}
+
+.container-select {
+  margin-bottom: 16px;
+  &__form {
+    appearance: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #222;
+    height: 48px;
+    line-height: 1;
+    outline: none;
+    padding: 0 16px;
+    width: 100%;
+  }
+}
+
+// -----------------カテゴリ-----------------------
+
+.container-titlebox__detail {
+  color: rgb(136, 136, 136);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+  margin-bottom: 24px;
+}
+
+.detail-container__category__title {
+  margin-bottom: 16px;
+}
+
+.detail-container__category__choose {
+  margin-bottom: 16px;
+  &__form {
+    appearance: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #222;
+    height: 48px;
+    line-height: 1;
+    outline: none;
+    padding: 0 16px;
+    width: 100%;
+  }
+}
+
+// -----------------画像投稿フォーム部分-----------------------
+.edit__drop__box__container {
+  display: block;
+  margin: 16px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  .edit__prev-content {
+    display: flex;
+    .edit__preview-box {
+      height: 162px;
+      width: 112px;
+      margin: 0 15px 10px 0;
+      .edit__upper-box {
+        height: 112px;
+        width: 100%;
+        img{
+          width: 112px;
+          height: 112px;
+        }
+        .edit__delete-btn {
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .edit__label-content{
+    margin-bottom: 10px;
+    width: 620px;
+    .edit__label-box {
+      display: block;
+      border: 1px dashed #ccc;
+      position: relative;
+      background: #f5f5f5;
+      width: 100%;
+      height: 162px;
+      cursor: pointer;
+      &__text-visible {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: bold;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    }
+  }
+  
+  //file_fieldのcss
+  .edit__hidden-content {
+    .edit__js-file_group{
+      .edit__hidden-field{
+        display: none;
+      }
+    }
+  }
+}

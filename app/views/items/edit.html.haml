@@ -1,8 +1,8 @@
-.listingpage
-  .top
-    = link_to root_path, class: 'top__link' do
-      = image_tag 'logo.png', class: 'top__link__image'
-    %p1.top__edit
+.edit-page
+  .edit-top
+    = link_to root_path, class: 'edit-top__link' do
+      = image_tag 'logo.png', class: 'edit-top__link__image'
+    %p1.edit-text
       編集画面
   .short
     .middle
@@ -15,30 +15,27 @@
               必須
           %p.image-container__message
             最大5枚までアップロードできます
-          .post__drop__box__container
-            .prev-content
-              -@item.item_images.each do |image|
-                .preview-box
-                  .upper-box
-                    = image_tag image.image.url, width: "112", height: "112", alt: "preview"
-                  .lower-box
-                    -# .update-box
-                    -#   .edit-btn 
-                    -#     %span 編集
-                    .delete-box
-                      .delete-btn
-                        %span 削除
-            .label-content
-              %label{for: "item_item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
-                %pre.label-box__text-visible クリックしてファイルをアップロード
-            .hidden-content
+          .edit__drop__box__container
+            .edit__prev-content
+              - if @item.persisted?
+                - @item.item_images.each_with_index do |image, i|
+                  .edit__preview-box
+                    .edit__upper-box
+                      - if image.persisted?
+                        = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+                        .edit__delete-btn 削除
+            .edit__label-content
+              %label{for: "item_item_images_attributes_#{@item.item_images.count}_image", class: "edit__label-box", id: "edit__label-box--0"}
+                %pre.edit__label-box__text-visible クリックしてファイルをアップロード
+            .edit__hidden-content
               = f.fields_for :item_images do |i|
-                = i.file_field :image, class: "hidden-field"
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_item_images_attributes_1_image" }
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_item_images_attributes_2_image" }
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_item_images_attributes_3_image" }
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_item_images_attributes_4_image" }
-        
+                .edit__js-file_group{"data-index" => "#{i.index}"}
+                  = i.file_field :image, class: "edit__hidden-field"
+                - if @item.persisted?
+                  = i.check_box :_destroy, data:{ index: i.index }, class: 'edit__hidden-destroy'
+              - if @item.persisted?
+                .edit__js-file_group{"data-index": "#{@item.item_images.count}"}
+                  = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][image]", class: 'edit__hidden-field', id: "item_item_images_attributes_#{@item.item_images.count}_image"
         .item-container
           .container-item
             %label.label
@@ -66,16 +63,13 @@
               %span.redlabel
                 必須
             .detail-container__category__choose
-              = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'detail-container__category__choose__form', id: 'parent_category'}
-              = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "---", selected: @item.category.parent.id}),{}, {class: 'category-wrapper__category form-control', id: 'child_category'}
-              = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "---", selected: @item.category.id}),{}, {class: 'category-wrapper__category form-control', id: 'grandchild_category'}
-              -# #children_wrapper.detail-container__category__choose__added
-              -#   .detail-container__category__choose1
-              -#     %select#child_category.detail-container__category__choose--select{:name => "item[category_id]"}
-              -#       %option{"data-category" => "---", :value => "---"} ---
-              -#       ${insertHTML}
-              -#       %select
-              -# = f.collection_select :category_id, @category_parent_array, :id, :name, { prompt: '---' }, {class: 'detail-container__category__choose__form', id: 'parent_category' }
+              = f.select :parent_name, @category_parent_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected:@item.category.parent.parent.id}, { class: 'detail-container__category__choose__form', id: 'parent_category'}
+              #children_wrapper.detail-container__category__choose__added
+                .detail-container__category__choose1
+                  = f.select :child_id, @category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @item.category.parent.id}, {class: 'detail-container__category__choose__select', id: 'child_category'}
+              #grandchildren_wrapper.detail-container__category__choose__added
+                .detail-container__category__choose2
+                  = f.select :category_id, @category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @item.category.id}, {class: 'detail-container__category__choose__box__select', id: 'grandchildren_category'}
           .container-item
             %label.label
               ブランド
@@ -134,7 +128,7 @@
             
         .submit-container 
           .submit-container__btn
-            = f.submit '出品する', class: 'submit-container__btn__submit'
+            = f.submit '編集する', class: 'submit-container__btn__submit'
           .submit-container__back
             = link_to '#', class: 'submit-container__back__btn' do
               もどる
