@@ -27,7 +27,7 @@ class ConfirmsController < ApplicationController
     )
     @item_buyer = Item.find_by(params[:id])
     @item_buyer.update(buyer_id: current_user.id)
-    redirect_to done_confirms_path
+    redirect_to done_item_confirms_path
   end
 
   def done
