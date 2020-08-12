@@ -20,9 +20,17 @@
             = image_tag 'icon_brand.png', size: '16x16'
             ブランド
       %ul.Header-part__contents__menu__right
-        %li.Header-part__contents__menu__left__list--first
-          = link_to root_path, class: 'Header-part__contents__menu__left__list--first__btn' do
-            ログイン
-        %li.Header-part__contents__menu__left__list--second
-          = link_to root_path, class: 'Header-part__contents__menu__left__list--second__btn' do
-            新規会員登録
+        -if user_signed_in?
+          %li.Header-part__contents__menu__left__list--first
+            = link_to  destroy_user_session_path, class: 'Header-part__contents__menu__left__list--first__btn', method: :delete do
+              ログアウト
+            %li.Header-part__contents__menu__left__list--second
+            = link_to user_path, class: 'Header-part__contents__menu__left__list--second__btn' do
+              マイページ
+        -else
+          %li.Header-part__contents__menu__left__list--first
+            = link_to new_user_session_path, class: 'Header-part__contents__menu__left__list--first__btn' do
+              ログイン
+          %li.Header-part__contents__menu__left__list--second
+            = link_to new_user_registration_path, class: 'Header-part__contents__menu__left__list--second__btn' do
+              新規会員登録
