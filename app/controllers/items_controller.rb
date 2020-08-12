@@ -2,8 +2,7 @@ class ItemsController < ApplicationController
 
   def index
     @images = ItemImage.all
-    @items = Item.all
-    
+    @items = Item.all.limit(5)
   end
 
   def get_category_children
