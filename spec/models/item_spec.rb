@@ -32,12 +32,6 @@ describe Item, type: :model do
       expect(item.errors[:explanation]).to include("は1000文字以内で入力してください")
     end
 
-    it "is invalid without a status" do
-      item = build(:item, status: "")
-      item.valid?
-      expect(item.errors[:status]).to include("を入力してください")
-    end
-
     it "is invalid without a category_id" do
       item = build(:item, category_id: "")
       item.valid?
