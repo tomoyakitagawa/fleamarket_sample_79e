@@ -5,7 +5,7 @@ class CreateDeliveryAddresses < ActiveRecord::Migration[6.0]
       t.string :delivery_first_name,        null: false
       t.string :delivery_family_name_kana,  null: false
       t.string :delivery_first_name_kana,   null: false
-      t.integer :post_code,                 null: false
+      t.string :post_code,                  null: false
       t.integer :prefecture_id,             null: false
       t.string :city,                       null: false
       t.string :home_number,                null: false
