@@ -120,7 +120,7 @@
           .submit-container__btn
             = f.submit '出品する', class: 'submit-container__btn__submit'
           .submit-container__back
-            = link_to '#', class: 'submit-container__back__btn' do
+            = link_to root_path, class: 'submit-container__back__btn' do
               もどる
             
         .notes-container
@@ -136,6 +136,6 @@
           フリマ利用規約
         %li.under__box__list__message
           特定商取引に関する表示
-    = link_to '#', class: 'under__logo' do
+    = link_to root_path, class: 'under__logo' do
       = image_tag 'logo.png', class: 'under__logo__image', size: "140x55"
     %p.under__name ©️FURIMA
