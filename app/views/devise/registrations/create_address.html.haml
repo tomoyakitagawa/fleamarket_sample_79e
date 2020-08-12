@@ -1,2 +1,9 @@
-%h2 登録が完了しました
-= link_to "トップへ戻る", root_path
+.Create-user-main
+  .Create-user-main__contents
+    %section.Create-user-main__contents__field
+      %h2.Create-user-main__contents__field__head 登録が完了しました
+      .Create-user-main__contents__field__list
+        = link_to "トップへ戻る", root_path, class: 'Create-user-main__contents__field__list__btn'
+        = link_to new_card_path, class: 'Create-user-main__contents__field__list__btn' do
+          = icon('far', 'credit-card')
+          クレジットカードを登録する
