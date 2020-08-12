@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
+    @user = User.find(@item.seller_id)
     @category_id = @item.category_id
     @category_parent = Category.find(@category_id).parent.parent
     @category_child = Category.find(@category_id).parent
@@ -62,7 +63,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.seller_id == current_user.id
       if @item.update(item_params)
-        redirect_to root_path
+        redirect_to item_path(@item.id)
       else
         flash[:alert] = '必須項目を記載してください'
         redirect_to action: 'edit'
