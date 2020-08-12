@@ -67,11 +67,18 @@ class ItemsController < ApplicationController
   def update
     
     @item = Item.find(params[:id])
-    if @item.update(item_params)
-      redirect_to root_path
+    if @item.seller_id == current_user.id
+      if @item.update(item_params)
+        redirect_to root_path
+      else
+        flash[:alert] = '必須項目を記載してください'
+        redirect_to action: 'edit'
+      end
     else
-      render :edit
+      flash[:alert] = '編集に失敗しました'
+      redirect_to action: 'edit'
     end
+    
   end
 
   # 以下全て、formatはjsonのみ
@@ -95,7 +102,9 @@ class ItemsController < ApplicationController
 
   def move_to_index_edit
     @item = Item.find(params[:id])
-    redirect_to root_path unless current_user.id == @item.seller_id
-    flash[:alert] = '編集する権限を持っていません'
+    if current_user.id != @item.seller_id
+      flash[:alert] = '編集する権限を持っていません'
+      redirect_to root_path 
+    end
   end
 end
