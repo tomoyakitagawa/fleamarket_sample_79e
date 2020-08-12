@@ -238,15 +238,17 @@
       margin: 26px auto;
       display: flex;
       justify-content: space-around;
-      overflow-x: scroll;
       &__list{
-        width: 220px;
         display: inline-block;
         margin: 0 auto;
         height: 100%;
         .image_tag{
           text-decoration: none;
-          
+          justify-content: space-around;
+        }
+        .images_post{
+          display: flex;
+          margin: auto;
         }
         .pickup_brand__product__images{
           width: 220px;

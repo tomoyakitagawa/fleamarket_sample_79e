@@ -4,17 +4,18 @@
       .topContents
         .itemBox
           %h2.itemBox__name
-            product
+            =@item.name
           .itemBox__body
-            = image_tag '/assets/pict-reason-01.jpg', alt: 'No Image', class: 'itemBox__body__mainImage'
-            %ul.itemBox__body__subImages
-              %li
-                = image_tag '/assets/pict-reason-02.jpg', alt: 'No Image', class: 'subImage'
-              %li
-                = image_tag '/assets/pict-reason-03.jpg', alt: 'No Image', class: 'subImage'
+            = image_tag @item.item_images[0].image.url, alt: 'No Image', class: 'itemBox__body__mainImage'
+            -# %ul.itemBox__body__subImages
+            -#   %li
+            -#     = image_tag @item.item_images[0].image.url, alt: 'No Image', class: 'subImage'
+            -#   %li
+            -#     = image_tag '/assets/pict-reason-03.jpg', alt: 'No Image', class: 'subImage'
           .itemBox__price
             .itemBox__price__tag
               =@item.price
+              円
             .itemBox__price__detail
               （税込）送料込み
           .itemDetail
@@ -25,7 +26,7 @@
                 %th
                   出品者
                 %td
-                  =@item.name
+                  =@nickname
               %tr
                 %th
                   カテゴリー
@@ -46,23 +47,23 @@
                 %th
                   商品の状態
                 %td
-                  =@item.condition_id
+                  =@item.condition.name
               %tr
                 %th
                   配送料の負担
                 %td
-                  =@item.postage_id
+                  =@item.postage.name
               %tr
                 %th
                   発送元地域
                 %td
                   = link_to "#", class: "table__link" do
-                  =@item.prefecture_id
+                    =@item.prefecture.name
               %tr
                 %th
                   発送日の目安
                 %td
-                  =@item.prepare_id
+                  =@item.prepare.name
           %br
           .optionalArea
             %ul.favorite
@@ -108,10 +109,11 @@
               .productListLink__body
                 .productListLink__body__name
                   %h3
-                    ee
+                    =@item.name
                 %ul.productListLink__body__detail
                   %li.productListLink__body__detail__price
                     =@item.price
+                    円
                   %li.productListLink__body__detail__favorete
                     = icon("fa", "star")
                     0
@@ -131,7 +133,7 @@
 
   - elsif user_signed_in? && current_user.id != @item.seller_id
     .Items-btn.buyer-btn
-      = link_to "購入する", item_path, method :confirms
+      = link_to "購入する", confirms_path
 
   - else
     .Items-btn.login-btn

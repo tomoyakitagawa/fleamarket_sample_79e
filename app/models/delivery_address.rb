@@ -4,7 +4,7 @@ class DeliveryAddress < ApplicationRecord
   # 空の入力を防ぐ
   validates :delivery_family_name, :delivery_first_name, :delivery_family_name_kana, :delivery_first_name_kana, :post_code, :city, :home_number, presence: true
   # 同じ電話番号は登録できない
-  validates :phone_number, uniqueness: true
+  validates :phone_number, uniqueness: true, allow_blank: true
   # 名前 全角文字のみ登録可能
   validates :delivery_family_name, :delivery_first_name, format: {with:/\A[ぁ-んァ-ン一-龥]/, message: "は全角のみで入力して下さい"}
   # 名前よみがな 全角カタカナにみ登録可能

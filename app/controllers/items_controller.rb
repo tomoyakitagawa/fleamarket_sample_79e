@@ -1,18 +1,10 @@
 class ItemsController < ApplicationController
   before_action :move_to_index_edit, only: [:edit]
+  before_action :move_to_index_destroy, only: [:destroy]
 
   def index
     @images = ItemImage.all
-    @items = Item.all
-    
-  end
-
-  def get_category_children
-    @category_children = Category.find(params[:parent_id]).children
-  end
-
-  def get_category_grandchildren
-    @category_grandchildren = Category.find(params[:child_id]).children
+    @items = Item.limit(5)
   end
   
   def show
@@ -26,9 +18,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-
     # データベースから、親カテゴリーのみ抽出し、配列化
-
     @category_parent_array = Category.where(ancestry: nil)
   end
 
@@ -81,7 +71,14 @@ class ItemsController < ApplicationController
     
   end
 
-  # 以下全て、formatはjsonのみ
+  def destroy
+    if @item.destroy
+      redirect_to root_path, notice: '削除しました'
+    else
+      render :edit
+    end
+  end
+
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     # 選択された親カテゴリーに紐付く子カテゴリーの配列を取得
@@ -106,5 +103,10 @@ class ItemsController < ApplicationController
       flash[:alert] = '編集する権限を持っていません'
       redirect_to root_path 
     end
+  end
+
+  def move_to_index_destroy
+    @item = Item.find(params[:id])
+    redirect_to root_path unless current_user.id == @item.seller_id
   end
 end

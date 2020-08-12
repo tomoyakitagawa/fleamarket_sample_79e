@@ -107,7 +107,7 @@
   .pickup_brand__containerBrand__product--lists
     .pickup_brand__containerBrand__product--lists__list
       %ul
-        %li
+        %li.images_post
           - @items.each do |item| 
             = link_to item_path(id: item.id) ,class: "image_tag" do
               .pickup_brand__product__images
@@ -117,17 +117,17 @@
                   .items-box_photo__sold
                     .items-box_photo__sold__inner
                       SOLD
-            .pickup_brand__containerBrand__product--lists__list__body
-              %h3.pickup_brand__product--name
-                = item.name
-              %ul.pickup_brand__details__menu
-                %li
-                  = item.price 
-                  = "円"
-                %li.item_list__body__likes
-                  = icon 'fas', 'star'
-                  0
-              %p (税込)     
+              .pickup_brand__containerBrand__product--lists__list__body
+                %h3.pickup_brand__product--name
+                  = item.name
+                %ul.pickup_brand__details__menu
+                  %li
+                    = item.price 
+                    = "円"
+                  %li.item_list__body__likes
+                    = icon 'fas', 'star'
+                    0
+                %p (税込)     
 
 .pickup_brand__containerBrand
   %h2.pickup_brand__containerBrand__title
@@ -139,7 +139,7 @@
   .pickup_brand__containerBrand__product--lists
     .pickup_brand__containerBrand__product--lists__list
       %ul
-        %li
+        %li.images_post
           - @items.each do |item| 
             = link_to item_path(id: item.id), class: "image_tag" do
               .pickup_brand__product__images
@@ -149,17 +149,17 @@
                   .items-box_photo__sold
                     .items-box_photo__sold__inner
                       SOLD
-            .pickup_brand__containerBrand__product--lists__list__body
-              %h3.pickup_brand__product--name
-                = item.name
-              %ul.pickup_brand__details__menu
-                %li
-                  = item.price 
-                  = "円"
-                %li.item_list__body__likes 
-                  = icon 'fas', 'star'
-                  0
-              %p (税込)     
+              .pickup_brand__containerBrand__product--lists__list__body
+                %h3.pickup_brand__product--name
+                  = item.name
+                %ul.pickup_brand__details__menu
+                  %li
+                    = item.price 
+                    = "円"
+                  %li.item_list__body__likes 
+                    = icon 'fas', 'star'
+                    0
+                %p (税込)     
 
 .app_banner__banner
   %section.app_banner__banner__image
