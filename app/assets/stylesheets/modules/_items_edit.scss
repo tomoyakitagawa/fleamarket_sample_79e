@@ -1,16 +1,20 @@
+// editの画面は商品登録画面をベースに編集
+// labelなどの新規登録と共通する部分は_item_new.scssに記述
+
 * {
   box-sizing: border-box;
 }
 
-.listingpage {
+.edit-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  .top {
+  .edit-top {
     height: 128px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background-color: #f8f8f8;
     &__link {
       &__image {
@@ -18,8 +22,15 @@
         height: 49px;
       }
     }
+    .edit-text {
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #fff;
+      width: 700px;
+      text-align: center;
+      margin-top: 15px;
+    }
   }
-      
   .short {
     background-color: #f8f8f8;
     .middle {
@@ -187,9 +198,6 @@
     }
   }
 }
-
-// -----------------共通-----------------------
-
 .container-item {
   margin-bottom: 16px;
 }
@@ -271,37 +279,36 @@
 }
 
 // -----------------画像投稿フォーム部分-----------------------
-.post__drop__box__container {
+.edit__drop__box__container {
   display: block;
   margin: 16px auto 0;
   display: flex;
   flex-wrap: wrap;
-
-  .prev-content {
+  .edit__prev-content {
     display: flex;
-    .preview-box {
+    .edit__preview-box {
       height: 162px;
       width: 112px;
       margin: 0 15px 10px 0;
-      .upper-box {
+      .edit__upper-box {
         height: 112px;
         width: 100%;
         img{
           width: 112px;
           height: 112px;
         }
-        .delete-btn {
+        .edit__delete-btn {
           text-align: center;
+          cursor: pointer;
         }
       }
     }
   }
 
-  //---------------投稿クリックエリアのCSS----------------
-  .label-content{
+  .edit__label-content{
     margin-bottom: 10px;
     width: 620px;
-    .label-box {
+    .edit__label-box {
       display: block;
       border: 1px dashed #ccc;
       position: relative;
@@ -326,11 +333,11 @@
       }
     }
   }
-
+  
   //file_fieldのcss
-  .hidden-content {
-    .js-file_group{
-      .hidden-field {
+  .edit__hidden-content {
+    .edit__js-file_group{
+      .edit__hidden-field{
         display: none;
       }
     }

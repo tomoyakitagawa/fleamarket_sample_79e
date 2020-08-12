@@ -1,0 +1,151 @@
+.edit-page
+  .edit-top
+    = link_to root_path, class: 'edit-top__link' do
+      = image_tag 'logo.png', class: 'edit-top__link__image'
+    %p1.edit-text
+      編集画面
+  .short
+    .middle
+      = form_with model: @item, local: true do |f|
+        .image-container
+          .container-item
+            %label.label
+              出品画像
+            %span.redlabel
+              必須
+          %p.image-container__message
+            最大5枚までアップロードできます
+          .edit__drop__box__container
+            .edit__prev-content
+              - if @item.persisted?
+                - @item.item_images.each_with_index do |image, i|
+                  .edit__preview-box
+                    .edit__upper-box
+                      - if image.persisted?
+                        = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+                        .edit__delete-btn 削除
+            .edit__label-content
+              %label{for: "item_item_images_attributes_#{@item.item_images.count}_image", class: "edit__label-box", id: "edit__label-box--0"}
+                %pre.edit__label-box__text-visible クリックしてファイルをアップロード
+            .edit__hidden-content
+              = f.fields_for :item_images do |i|
+                .edit__js-file_group{"data-index" => "#{i.index}"}
+                  = i.file_field :image, class: "edit__hidden-field"
+                - if @item.persisted?
+                  = i.check_box :_destroy, data:{ index: i.index }, class: 'edit__hidden-destroy'
+              - if @item.persisted?
+                .edit__js-file_group{"data-index": "#{@item.item_images.count}"}
+                  = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][image]", class: 'edit__hidden-field', id: "item_item_images_attributes_#{@item.item_images.count}_image"
+        .item-container
+          .container-item
+            %label.label
+              商品名
+            %span.redlabel
+              必須
+          .item-name
+            = f.text_field :name, class: 'item-name__input', placeholder: '40文字以内'
+          .container-item
+            %label.label
+              商品の説明
+            %span.redlabel
+              必須
+          .item-explanation
+            = f.text_area :explanation, {cols: "30", class: "item-explanation__field", placeholder: "商品の説明（必須1,000文字以内）\n(色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "10"}
+          
+        .detail-container
+          .exhibitionPage__main__contents__detail__title
+            %p.container-titlebox__detail
+              商品の詳細
+          .detail-container__category
+            .detail-container__category__title
+              %label.label
+                カテゴリ
+              %span.redlabel
+                必須
+            .detail-container__category__choose
+              = f.select :parent_name, @category_parent_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected:@item.category.parent.parent.id}, { class: 'detail-container__category__choose__form', id: 'parent_category'}
+              #children_wrapper.detail-container__category__choose__added
+                .detail-container__category__choose1
+                  = f.select :child_id, @category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @item.category.parent.id}, {class: 'detail-container__category__choose__select', id: 'child_category'}
+              #grandchildren_wrapper.detail-container__category__choose__added
+                .detail-container__category__choose2
+                  = f.select :category_id, @category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @item.category.id}, {class: 'detail-container__category__choose__box__select', id: 'grandchildren_category'}
+          .container-item
+            %label.label
+              ブランド
+            %span.graylabel
+              任意
+          .brand-form
+            = f.text_field :brand, class: 'brand-form__box', placeholder: '例）シャネル'
+          .container-item
+            %label.label
+              商品の状態
+            %span.redlabel
+              必須
+          .container-select
+            = f.collection_select :condition_id, Condition.all, :id, :name, prompt: '選択してください', class: 'container-select__form'
+
+        .send-container
+          %p.container-title
+            配送について
+          .container-item
+            %label.label
+              配送の負担
+            %span.redlabel
+              必須
+          .container-select
+            = f.collection_select :postage_id, Postage.all, :id, :name, prompt: '選択してください', class: 'container-select__form'
+          .container-item
+            %label.label
+              配送の地域
+            %span.redlabel
+              必須
+          .container-select
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: '選択してください', class: 'container-select__form'
+          .container-item
+            %label.label
+              発送までの日数
+            %span.redlabel
+              必須
+          .container-select
+            = f.collection_select :prepare_id, Prepare.all, :id, :name, prompt: '選択してください', class: 'container-select__form'
+        
+        .price-container
+          %p.container-title
+            価格（¥300〜9,999,999）
+          .selling-form
+            .selling-form__price
+              .selling-form__price__label
+                %label.label
+                  販売価格
+                %span.redlabel
+                  必須
+              .selling-form__price__input
+                %p.selling-form__price__input__yen
+                  ¥
+                .selling-form__price__input__field
+                  = f.number_field :price, class: 'selling-form__price__input__field__box', placeholder: '0'
+            
+        .submit-container 
+          .submit-container__btn
+            = f.submit '編集する', class: 'submit-container__btn__submit'
+          .submit-container__back
+            = link_to '#', class: 'submit-container__back__btn' do
+              もどる
+            
+        .notes-container
+          %p.notes-container__message
+            禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+  .under
+    .under__box
+      %ul.under__box__list
+        %li.under__box__list__message
+          プライバシーポリシー
+        %li.under__box__list__message
+          フリマ利用規約
+        %li.under__box__list__message
+          特定商取引に関する表示
+    = link_to '#', class: 'under__logo' do
+      = image_tag 'logo.png', class: 'under__logo__image', size: "140x55"
+    %p.under__name ©️FURIMA
