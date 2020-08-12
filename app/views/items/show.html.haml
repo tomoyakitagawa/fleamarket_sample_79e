@@ -73,7 +73,7 @@
                 = link_to "この商品を削除する", item_path, method: :delete, class: "inappropriate__word", data: { confirm: '【確認】削除すると二度と復活できません。本当に削除しますか？' }
         -if user_signed_in?
           .buyerBox
-            -if user_signed_in? && current_user.id != @item.seller_id
+            -if current_user.id != @item.seller_id
               = link_to "購入する", item_confirms_path(@item), class: "buyer__btn"
             - elsif @item.buyer_id.present?
               .buyer__btn
