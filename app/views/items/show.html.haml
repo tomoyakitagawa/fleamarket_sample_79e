@@ -131,7 +131,7 @@
 
   - elsif user_signed_in? && current_user.id != @item.seller_id
     .Items-btn.buyer-btn
-      = link_to "購入する", item_path, method :confirms
+      = link_to "購入する", confirms_path
 
   - else
     .Items-btn.login-btn
