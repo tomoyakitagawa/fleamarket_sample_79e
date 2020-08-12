@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new
+      redirect_to action: 'new'
     end
   end
 
