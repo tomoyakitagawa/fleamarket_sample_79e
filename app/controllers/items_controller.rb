@@ -48,7 +48,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # 以下全て、formatはjsonのみ
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     # 選択された親カテゴリーに紐付く子カテゴリーの配列を取得
