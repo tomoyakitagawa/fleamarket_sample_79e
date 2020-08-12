@@ -24,11 +24,13 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @category_parent_array = Category.where(ancestry: nil)
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
-      render :new
+      flash[:alert] = '必須項目を入力してください'
+      redirect_to action: 'new'
     end
   end
 
