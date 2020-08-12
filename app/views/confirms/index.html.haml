@@ -74,6 +74,10 @@
             %br
             TEL：
             = @address.phone_number
+            %br
+            名前：
+            = @address.delivery_family_name
+            = @address.delivery_first_name
         -# 実装完了後コメントアウト解除
         -# = link_to "", class: "select__registration" do
         -#   = icon("fas", "plus-circle", class: "select__registration__icon")
@@ -84,7 +88,7 @@
         .purchase__group
           %P.purchase__group__description
             出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください
-          = form_with action: :pay, method: :post,local: true do |f|
+          = form_with url:pay_item_confirms_path, method: :post,local: true do |f|
             = f.submit "購入する", class: "purchase__group__style_button"
   .confirms-footer
     .terms

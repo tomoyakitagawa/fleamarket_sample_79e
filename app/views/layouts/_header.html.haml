@@ -1,0 +1,36 @@
+.Header-part
+  .Header-part__contents
+    .Header-part__contents__top
+      %h1.Header-part__contents__top__icon
+        = link_to root_path, class: 'Header__contents__top__icon__logo' do
+          = image_tag "logo.png", alt: "logo", width: '140', class: 'Header__contents__top__icon__logo__img'
+      .Header-part__contents__top__search
+        %form.Header-part__contents__top__search__form
+          %input.Header-part__contents__top__search__form__box{"placeholder": "キーワードから探す", "type": "text"}
+          %button.Header-part__contents__top__search__form__btn
+            = image_tag 'icon-search 1.png', class: "Header-part__contents__top__search__form__btn__icon-image"
+    .Header-part__contents__menu
+      %ul.Header-part__contents__menu__left
+        %li.Header-part__contents__menu__left__list--first
+          = link_to root_path, class: 'Header-part__contents__menu__left__list--first__btn' do
+            = image_tag 'icon_category.png', size: '16x16'
+            カテゴリー
+        %li.Header-part__contents__menu__left__list--second
+          = link_to root_path, class: 'Header-part__contents__menu__left__list--second__btn' do
+            = image_tag 'icon_brand.png', size: '16x16'
+            ブランド
+      %ul.Header-part__contents__menu__right
+        -if user_signed_in?
+          %li.Header-part__contents__menu__left__list--first
+            = link_to  destroy_user_session_path, class: 'Header-part__contents__menu__left__list--first__btn', method: :delete do
+              ログアウト
+            %li.Header-part__contents__menu__left__list--second
+              = link_to user_path(current_user.id), class: 'Header-part__contents__menu__left__list--second__btn', method: :get do
+                マイページ
+        -else
+          %li.Header-part__contents__menu__left__list--first
+            = link_to new_user_session_path, class: 'Header-part__contents__menu__left__list--first__btn' do
+              ログイン
+          %li.Header-part__contents__menu__left__list--second
+            = link_to new_user_registration_path, class: 'Header-part__contents__menu__left__list--second__btn' do
+              新規会員登録
