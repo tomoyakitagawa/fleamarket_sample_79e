@@ -55,9 +55,9 @@
               %tr
                 %th
                   発送元地域
-                %td
-                  = link_to "#", class: "table__link" do
-                    =@item.prefecture_id
+                -# %td
+                -#   = link_to "#", class: "table__link" do
+                -#   =@item.prefecture_id
               %tr
                 %th
                   発送日の目安
@@ -131,7 +131,7 @@
 
   - elsif user_signed_in? && current_user.id != @item.seller_id
     .Items-btn.buyer-btn
-      = link_to "購入する", confirms_path
+      = link_to "購入する", item_confirms_path(@item)
 
   - else
     .Items-btn.login-btn

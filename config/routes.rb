@@ -16,22 +16,11 @@ Rails.application.routes.draw do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
-    #詳細画面実装後導入
-    # resources :confirms, only: :index do
-    #   collection do
-    #     get 'done', to: 'confirms#done'
-    #     post 'confirms', to: 'confirms#pay'
-    #   end
-    # end
-  end
-  
-  #詳細画面実装後削除
-  get 'confirms', to: 'confirms#index'
-  post 'confirms', to: 'confirms#pay'
-  resources :confirms, only: :index do
-    collection do
-      get 'done', to: 'confirms#done'
-      post 'confirms', to: 'confirms#pay'
+    resources :confirms, only: :index do
+      collection do
+        get 'done', to: 'confirms#done'
+        post 'pay', to: 'confirms#pay'
+      end
     end
   end
 
