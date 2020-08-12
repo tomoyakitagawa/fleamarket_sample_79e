@@ -30,15 +30,13 @@
                 %th
                   カテゴリー
                 %td
-                  = link_to "#", class: "table__link" do
-                    = @item.category.parent.parent.name
-                  %br
-                  = link_to "#", class: "table__link" do
-                    = @item.category.parent.name
-                  %br
-                  = link_to "#", class: "table__link" do
-                    = @item.category.name
-                  %br
+                  %ul.category_body
+                    %li
+                      = link_to "#{@category_parent.name}","#"
+                    %li
+                      = link_to "#{@category_child.name}","#"
+                    %li
+                      = link_to "#{@category_grandchild.name}","#"
               %tr
                 %th
                   ブランド
