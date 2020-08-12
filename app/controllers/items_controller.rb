@@ -3,8 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @images = ItemImage.all
-    @items = Item.all
-    
+    @items = Item.limit(5)
   end
   
   def show
