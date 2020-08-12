@@ -14,7 +14,7 @@
             -#     = image_tag '/assets/pict-reason-03.jpg', alt: 'No Image', class: 'subImage'
           .itemBox__price
             .itemBox__price__tag
-              =@item.price
+              =@item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
               円
             .itemBox__price__detail
               （税込）送料込み
@@ -65,31 +65,25 @@
                 %td
                   =@item.prepare.name
           %br
-          .optionalArea
-            %ul.favorite
-              %li.favorite__icon
-                = icon("fas", "star")
-              %li.favorite__word
-                お気に入り
-              %li.favorite__count
-                0
-            %ul
-              = link_to "#", class: "inappropriate" do
-                %li.inappropriate__icon
-                  = icon("fas", "flag")
-                %li.inappropriate__word
-                  不適切な商品の通報
-        .commentBox
-          = form_with url: "#", class: "commentBox__form", local: true do |f|
-            = f.text_area :content, class: "commentBox__form__textarea"
-            %p.commentBox__form__sentence
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br
-              不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %br
-            = button_tag type: 'submit', class: "commentBox__form__btn" do
-              = icon('fas', 'comment')
-              コメントする
+          - if user_signed_in? && current_user.id == @item.seller_id
+            .optionalArea
+              .favorite
+                = link_to "商品の編集", edit_item_path, class: "favorite__word"
+              .inappropriate
+                = link_to "この商品を削除する", item_path, method: :delete, class: "inappropriate__word", data: { confirm: '【確認】削除すると二度と復活できません。本当に削除しますか？' }
+        -if user_signed_in?
+          .buyerBox
+            -if current_user.id != @item.seller_id
+              = link_to "購入する", item_confirms_path(@item), class: "buyer__btn"
+            - elsif @item.buyer_id.present?
+              .buyer__btn
+                ※この商品は既に購入されております
+            -else
+              .buyer__btn
+                自分の投稿です
+        -else
+          .buyerBox
+            = link_to "ログインしてください", new_user_session_path, class: "buyer__btn"
       %ul.showLinks
         %li
           = link_to "#", class: "link" do
@@ -102,43 +96,3 @@
       .relatedItems
         = link_to "#", class: "relatedItems__link" do
           メンズをもっとみる
-        .productLists
-          .productList
-            = link_to "#", class: "productListLink" do
-              = image_tag '/assets/pict-reason-03.jpg', alt: 'No Image', class: 'productListLink__image'
-              .productListLink__body
-                .productListLink__body__name
-                  %h3
-                    =@item.name
-                %ul.productListLink__body__detail
-                  %li.productListLink__body__detail__price
-                    =@item.price
-                    円
-                  %li.productListLink__body__detail__favorete
-                    = icon("fa", "star")
-                    0
-                %p.productListLink__body__unit
-                  (税込)
-
-.Btn-area
-  - if user_signed_in? && current_user.id == @item.seller_id
-    .Items-btn.seller-btn
-      = link_to "商品の編集", edit_item_path
-    .Item-btn.deleate
-      = link_to "この商品を削除する", item_path, method: :delete, data: { confirm: '【確認】削除すると二度と復活できません。本当に削除しますか？' }
-  
-  - elsif @item.buyer_id.present?
-    .item-purchase
-      ※この商品は既に購入されております
-
-  - elsif user_signed_in? && current_user.id != @item.seller_id
-    .Items-btn.buyer-btn
-      = link_to "購入する", item_confirms_path(@item)
-
-  - else
-    .Items-btn.login-btn
-      .login-btn__top
-        ※ログインすると購入できます。
-      = link_to new_user_session_path do
-        .login-btn__down
-          ログインはこちらから
