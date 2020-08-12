@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.seller_id == current_user.id
       if @item.update(item_params)
-        redirect_to root_path
+        redirect_to item_path(@item.id)
       else
         flash[:alert] = '必須項目を記載してください'
         redirect_to action: 'edit'
