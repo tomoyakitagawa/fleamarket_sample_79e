@@ -96,20 +96,3 @@
       .relatedItems
         = link_to "#", class: "relatedItems__link" do
           メンズをもっとみる
-        .productLists
-          .productList
-            = link_to "#", class: "productListLink" do
-              = image_tag '/assets/pict-reason-03.jpg', alt: 'No Image', class: 'productListLink__image'
-              .productListLink__body
-                .productListLink__body__name
-                  %h3
-                    =@item.name
-                %ul.productListLink__body__detail
-                  %li.productListLink__body__detail__price
-                    =@item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
-                    円
-                  %li.productListLink__body__detail__favorete
-                    = icon("fa", "star")
-                    0
-                %p.productListLink__body__unit
-                  (税込)
