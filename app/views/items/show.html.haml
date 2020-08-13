@@ -75,7 +75,7 @@
           .buyerBox
             - if @item.buyer_id.present?
               .buyer__btn
-                ※購入済み         
+                ※購入済み
             - elsif current_user.id != @item.seller_id
               = link_to "購入する", item_confirms_path(@item), class: "buyer__btn"
             -else

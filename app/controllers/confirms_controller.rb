@@ -26,8 +26,7 @@ class ConfirmsController < ApplicationController
       customer: @card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
-    @item_buyer = Item.find(params[:item_id])
-    @item_buyer.update(buyer_id: current_user.id)
+    @item.update(buyer_id: current_user.id)
     redirect_to done_item_confirms_path
   end
 
