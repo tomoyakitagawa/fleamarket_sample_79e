@@ -7,7 +7,7 @@
         新規会員登録
     .login-sns
       = button_tag type: 'submit', class: "login-sns__google" do
-        = image_tag '/assets/google-icon.png', alt: 'G', class: 'login-sns__google__image'
+        = icon("fab", "google", class: 'login-sns__google__icon')
         Googleでログインする
       = button_tag type: 'submit', class: "login-sns__facebook" do
         = icon('fab', 'facebook-square', class: "login-sns__facebook__icon")
