@@ -14,20 +14,8 @@
 ### Association
 - has_many :seller_items, class_name: 'item', foreign_key: 'seller_id'
 - has_many :buyer_items, class_name: 'item', foreign_key: 'buyer_id'
-- has_one :profile, dependent: :destroy
 - has_one :credit_card, dependent: :destroy
 - has_one :delivery_address, dependent: :destroy
-
-## profilesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|avatar|string||
-|introduction|text||
-|user|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
 
 ## cardsテーブル
 |Column|Type|Options|
