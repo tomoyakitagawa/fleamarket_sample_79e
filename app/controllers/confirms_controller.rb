@@ -5,7 +5,8 @@ class ConfirmsController < ApplicationController
   def index
     @user = current_user
     @address = DeliveryAddress.find_by(user_id: current_user.id)
-
+    
+    
     if @card.blank?
       #登録された情報がない場合にカード登録画面に移動
       redirect_to new_card_path
@@ -25,7 +26,7 @@ class ConfirmsController < ApplicationController
       customer: @card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
-    @item_buyer = Item.find_by(params[:id])
+    @item_buyer = Item.find(params[:item_id])
     @item_buyer.update(buyer_id: current_user.id)
     redirect_to done_item_confirms_path
   end
@@ -40,7 +41,7 @@ class ConfirmsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find_by(params[:id])
+    @item = Item.find(params[:item_id])
   end
 
 end
