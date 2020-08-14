@@ -6,8 +6,7 @@
           %h2.itemBox__name
             =@item.name
           .itemBox__body
-            -if @item.item_images[0] != nil
-              = image_tag @item.item_images[0].image.url, alt: 'No Image', class: 'itemBox__body__mainImage'
+            = image_tag @item.item_images[0].image.url, alt: 'No Image', class: 'itemBox__body__mainImage'
             -# %ul.itemBox__body__subImages
             -#   %li
             -#     = image_tag @item.item_images[0].image.url, alt: 'No Image', class: 'subImage'
