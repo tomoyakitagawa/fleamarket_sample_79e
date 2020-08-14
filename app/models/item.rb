@@ -11,6 +11,7 @@ class Item < ApplicationRecord
 
   accepts_nested_attributes_for :item_images, allow_destroy: true
 
+  validates :item_images, presence: true
   validates :name, length: { maximum: 40 }, presence: true
   validates :explanation, length: { maximum: 1000 }, presence: true
   validates :category_id, :condition_id, :postage_id, :prefecture_id, :prepare_id, :seller_id, presence: true
