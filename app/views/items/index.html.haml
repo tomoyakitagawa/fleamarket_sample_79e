@@ -111,12 +111,13 @@
           - @items.each do |item| 
             = link_to item_path(id: item.id) ,class: "image_tag" do
               .pickup_brand__product__images
-                -if ft_image = item.item_images.first
+                -ft_image = item.item_images.first
+                -if ft_image != nil
                   = image_tag ft_image.image.url, class: "pickup_brand__product__images--image"
-                    -if item.buyer_id.present? 
-                    .items-box_photo__sold
-                      .items-box_photo__sold__inner
-                        SOLD
+                -if item.buyer_id.present? 
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner
+                      SOLD
               .pickup_brand__containerBrand__product--lists__list__body
                 %h3.pickup_brand__product--name
                   = item.name
